@@ -12,8 +12,8 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
     private long window;
-    private final int width = 300;
-    private final int height = 300;
+    private final int width = 800;
+    private final int height = 600;
 
     public void run() {
         init();
@@ -34,7 +34,7 @@ public class Window {
 
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
         window = glfwCreateWindow(width, height, "Hello World!", NULL, NULL);
         if (window == NULL)
@@ -65,6 +65,7 @@ public class Window {
 
             // Draw a white pixel in the center of the screen
             Graphics.putPixel(0, 0);
+            Graphics.drawLine(100, 100, -100, -100);
 
             glfwSwapBuffers(window);
             glfwPollEvents();
