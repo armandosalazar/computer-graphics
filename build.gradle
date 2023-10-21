@@ -33,7 +33,9 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
 
     // ImGui
+
     // implementation "io.github.spair:imgui-java:1.84.0"
+    implementation 'io.github.spair:imgui-java-lwjgl3:1.86.11'
 }
 
 test {
