@@ -1,4 +1,4 @@
-package org.armando;
+package org.armandosalazar;
 
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
@@ -12,8 +12,12 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
     private long window;
-    private final int width = 800;
+    private final int width = 400;
     private final int height = 600;
+    private final int[] windowWidth = new int[1];
+    private final int[] windowHeight = new int[1];
+    private final int[] framebufferWidth = new int[1];
+    private final int[] framebufferHeight = new int[1];
 
     public void run() {
         init();
@@ -35,6 +39,10 @@ public class Window {
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+//        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+//        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+//        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+//        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 
         window = glfwCreateWindow(width, height, "Hello World!", NULL, NULL);
         if (window == NULL)
@@ -48,14 +56,23 @@ public class Window {
         glfwMakeContextCurrent(window);
         glfwSwapInterval(1);
         glfwShowWindow(window);
+
+        glfwGetWindowSize(window, windowWidth, windowHeight); // Get the window size passed to glfwCreateWindow
+        System.out.println("Window size: " + windowWidth[0] + "x" + windowHeight[0]);
+        glfwGetFramebufferSize(window, framebufferWidth, framebufferHeight); // Get the frame buffer size passed to glfwCreateWindow
+        System.out.println("Framebuffer size: " + framebufferWidth[0] + "x" + framebufferHeight[0]);
+
+        // Important! Without this line, LWJGL3 won't work!
+        GL.createCapabilities(); // this line is critical for LWJGL's interoperation with GLFW's OpenGL context, or any context that is managed externally.
+
     }
 
     private void loop() {
-        GL.createCapabilities();
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Black background
+        glPointSize(2.0f);
 
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         while (!glfwWindowShouldClose(window)) {
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
 
             // Use pixel coordinates centered at (0, 0)
             glMatrixMode(GL_PROJECTION);
@@ -64,8 +81,21 @@ public class Window {
             glMatrixMode(GL_MODELVIEW);
 
             // Draw a white pixel in the center of the screen
-            Graphics.putPixel(0, 0);
+            glColor3f(1.0f, 1.0f, 1.0f);
             Graphics.drawLine(100, 100, -100, -100);
+            Graphics.drawCircle(0, 0, 100);
+            Graphics.drawRectangle(0, 0, 200, 20);
+            Graphics.drawEllipse(0, 0, 200, 100);
+
+            Graphics.setColorRGB(0, 225, 125);
+            Graphics.drawTriangle(0, 0, 100, 100, 200, 0);
+
+            Graphics.setColorRGB(252, 177, 3);
+            Graphics.putPixel(0, 0);
+
+            Graphics.drawPolygon(new int[]{0, 100, 200}, new int[]{0, 100, 0}, 3);
+
+            Animation.bomberman(0, 0);
 
             glfwSwapBuffers(window);
             glfwPollEvents();

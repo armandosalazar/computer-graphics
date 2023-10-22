@@ -1,4 +1,4 @@
-package org.armando;
+package org.armandosalazar;
 
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
