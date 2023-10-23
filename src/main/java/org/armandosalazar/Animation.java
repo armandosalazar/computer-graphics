@@ -23,6 +23,16 @@ public abstract class Animation {
                 }
                 break;
             }
+            case 3: {
+                if (x % 20 == 0) {
+                    bombermanToRight(x, y);
+                } else if (x % 10 == 0) {
+                    bombermanToRightTwo(x, y);
+                } else {
+                    bombermanStanding(x, y);
+                }
+                break;
+            }
             case 4: {
                 if (x % 20 == 0) {
                     bombermanToLeft(x, y);
@@ -284,12 +294,77 @@ public abstract class Animation {
         Graphics.setColorRGB(56, 135, 0);
         Graphics.fillRect(x + 2, y + 22, 2, 4);
         Graphics.fillRect(x + 8, y + 22, 2, 4);
-
-
     }
 
 
     public static void bombermanToRight(int x, int y) {
+        Graphics.setColorRGB(100, 176, 255); // blue
+        Graphics.fillRect(x + 4, y + 6, 12, 12);
+        Graphics.fillRect(x + 6, y + 18, 12, 4);
+        Graphics.fillRect(x + 12, y + 4, 4, 2);
+
+        Graphics.setColorRGB(255, 255, 255); // white
+        Graphics.fillRect(x + 4, y + 4, 6, 4); // left foot
+        Graphics.fillRect(x + 2, y + 6, 2, 2);
+        Graphics.fillRect(x + 8, y + 8, 2, 2);
+        Graphics.fillRect(x + 8, y + 20, 12, 12); // head
+        Graphics.fillRect(x + 6, y + 22, 16, 8);
+        Graphics.fillRect(x + 4, y + 30, 2, 2); // hair
+        Graphics.fillRect(x + 8, y + 14, 6, 4); // right hand
+        Graphics.fillRect(x + 10, y + 12, 8, 4); // right hand
+        Graphics.fillRect(x + 14, y + 6, 2, 2); // right foot
+        Graphics.fillRect(x + 16, y + 4, 2, 6);
+
+        Graphics.setColorRGB(255, 129, 111); // skin
+        Graphics.fillRect(x + 2, y + 30, 2, 2);
+        Graphics.fillRect(x, y + 12, 4, 4); // left hand
+        Graphics.fillRect(x + 4, y, 4, 2); // left foot
+        Graphics.fillRect(x + 2, y + 2, 4, 2);
+        Graphics.fillRect(x, y + 4, 4, 2); // right foot
+        Graphics.fillRect(x + 20, y + 10, 2, 2);
+        Graphics.fillRect(x + 18, y + 4, 4, 6);
+        Graphics.fillRect(x + 12, y + 24, 10, 4); // eyes
+        Graphics.fillRect(x + 10, y + 26, 2, 2); // eyes
+        Graphics.fillRect(x + 18, y + 14, 4, 4); // right hand
+        Graphics.setColorRGB(56, 135, 0); // green
+        Graphics.fillRect(x + 14, y + 24, 2, 4);
+        Graphics.fillRect(x + 18, y + 24, 2, 4);
+    }
+
+    public static void bombermanToRightTwo(int x, int y) {
+        Graphics.setColorRGB(100, 176, 255); // blue
+        Graphics.fillRect(x + 6, y + 6, 12, 12);
+        Graphics.fillRect(x + 18, y + 12, 2, 4);
+        Graphics.fillRect(x + 8, y + 18, 4, 2);
+        Graphics.fillRect(x + 6, y + 28, 2, 2);
+
+        Graphics.setColorRGB(255, 255, 255); // white
+        Graphics.fillRect(x + 10, y + 18, 12, 12);
+        Graphics.fillRect(x + 8, y + 20, 16, 8);
+        Graphics.fillRect(x + 4, y + 10, 4, 4); // left hand
+        Graphics.fillRect(x + 6, y + 12, 4, 4);
+        Graphics.fillRect(x + 8, y + 14, 4, 4);
+        Graphics.fillRect(x + 2, y + 6, 4, 2);
+        Graphics.fillRect(x + 4, y + 4, 4, 2);
+        Graphics.fillRect(x + 10, y + 4, 6, 2);
+        Graphics.fillRect(x + 12, y + 6, 4, 2);
+        Graphics.fillRect(x + 18, y + 8, 2, 4);
+
+        Graphics.setColorRGB(255, 129, 111); // skin
+        Graphics.fillRect(x, y + 2, 2, 4); // left foot
+        Graphics.fillRect(x + 2, y + 4, 2, 2);
+        Graphics.fillRect(x + 2, y + 8, 4, 4); // left hand
+        Graphics.fillRect(x + 10, y, 4, 4); // right foot
+        Graphics.fillRect(x + 14, y, 2, 2);
+        Graphics.fillRect(x + 20, y + 10, 4, 4);
+        Graphics.fillRect(x + 14, y + 22, 10, 4);
+        Graphics.fillRect(x + 12, y + 24, 2, 2);
+        Graphics.fillRect(x + 4, y + 30, 2, 2);
+
+        Graphics.setColorRGB(56, 135, 0); // green
+        Graphics.fillRect(x + 16, y + 22, 2, 4);
+        Graphics.fillRect(x + 20, y + 22, 2, 4);
+        Graphics.fillRect(x + 16, y + 6, 2, 2);
     }
 
 

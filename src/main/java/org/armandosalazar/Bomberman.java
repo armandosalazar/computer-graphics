@@ -62,6 +62,7 @@ public class Bomberman {
             }
             if (key == GLFW_KEY_RIGHT && action == GLFW_RELEASE) {
                 bombermanX += 10;
+                direction = 3;
             }
             if (key == GLFW_KEY_LEFT && action == GLFW_RELEASE) {
                 bombermanX -= 10;
