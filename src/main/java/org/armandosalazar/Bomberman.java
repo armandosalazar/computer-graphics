@@ -89,7 +89,12 @@ public class Bomberman {
             glMatrixMode(GL_MODELVIEW);
 
             // Draw a white pixel in the center of the screen
-            Animation.bomberman(bombermanX, bombermanY);
+            // Animation.bomberman(bombermanX, bombermanY);
+            if (bombermanY % 20 == 0)
+                Animation.bombermanRightFoot(bombermanX, bombermanY);
+            else
+                Animation.bombermanLeftFoot(bombermanX, bombermanY);
+            // Animation.concreteBlock(0, 0);
 
             glfwSwapBuffers(window);
             glfwPollEvents();
