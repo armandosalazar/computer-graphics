@@ -95,8 +95,6 @@ public class Window {
 
             Graphics.drawPolygon(new int[]{0, 100, 200}, new int[]{0, 100, 0}, 3);
 
-            Animation.bomberman(0, 0);
-
             glfwSwapBuffers(window);
             glfwPollEvents();
         }

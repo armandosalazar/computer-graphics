@@ -17,6 +17,7 @@ public class Bomberman {
     // Bomberman coordinates
     private int bombermanX = 0;
     private int bombermanY = 0;
+    private int direction = 2; // 1 = up, 2 = down
 
     public void run() {
         init();
@@ -51,17 +52,20 @@ public class Bomberman {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
                 glfwSetWindowShouldClose(window, true);
             // Move bomberman
+            if (key == GLFW_KEY_UP && action == GLFW_RELEASE) {
+                bombermanY += 10;
+                direction = 1;
+            }
+            if (key == GLFW_KEY_DOWN && action == GLFW_RELEASE) {
+                bombermanY -= 10;
+                direction = 2;
+            }
             if (key == GLFW_KEY_RIGHT && action == GLFW_RELEASE) {
                 bombermanX += 10;
             }
             if (key == GLFW_KEY_LEFT && action == GLFW_RELEASE) {
                 bombermanX -= 10;
-            }
-            if (key == GLFW_KEY_UP && action == GLFW_RELEASE) {
-                bombermanY += 10;
-            }
-            if (key == GLFW_KEY_DOWN && action == GLFW_RELEASE) {
-                bombermanY -= 10;
+                direction = 4;
             }
         });
 
@@ -89,12 +93,8 @@ public class Bomberman {
             glMatrixMode(GL_MODELVIEW);
 
             // Draw a white pixel in the center of the screen
-            // Animation.bomberman(bombermanX, bombermanY);
-            if (bombermanY % 20 == 0)
-                Animation.bombermanRightFoot(bombermanX, bombermanY);
-            else
-                Animation.bombermanLeftFoot(bombermanX, bombermanY);
-            // Animation.concreteBlock(0, 0);
+            Animation.bomberman(bombermanX, bombermanY, direction);
+            Animation.concreteBlock(0, 0);
 
             glfwSwapBuffers(window);
             glfwPollEvents();
