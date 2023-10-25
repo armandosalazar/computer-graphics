@@ -119,6 +119,64 @@ public abstract class Graphics {
         }
     }
 
+    public static void fillCircle(int x, int y, int radius) {
+        int x1 = 0;
+        int y1 = radius;
+        int p = 1 - radius;
+
+        while (x1 <= y1) {
+            drawLine(x + x1, y + y1, x + x1, y - y1);
+            drawLine(x - x1, y + y1, x - x1, y - y1);
+            drawLine(x + y1, y + x1, x + y1, y - x1);
+            drawLine(x - y1, y + x1, x - y1, y - x1);
+
+            if (p < 0) {
+                p += 2 * x1 + 3;
+            } else {
+                p += 2 * (x1 - y1) + 5;
+                y1--;
+            }
+            x1++;
+        }
+    }
+
+    public static void fillEllipse(int x, int y, int width, int height) {
+        int a = width / 2;
+        int b = height / 2;
+        int x1 = 0;
+        int y1 = b;
+        int p = (int) Math.round(Math.pow(b, 2) - Math.pow(a, 2) * b + Math.pow(a, 2) / 4);
+
+        while (2 * Math.pow(b, 2) * x1 < 2 * Math.pow(a, 2) * y1) {
+            drawLine(x + x1, y + y1, x + x1, y - y1);
+            drawLine(x - x1, y + y1, x - x1, y - y1);
+
+            if (p < 0) {
+                p += (int) (2 * Math.pow(b, 2) * x1 + 3 * Math.pow(b, 2));
+            } else {
+                p += (int) (2 * Math.pow(b, 2) * x1 - 2 * Math.pow(a, 2) * y1 + 2 * Math.pow(a, 2) + 3 * Math.pow(b, 2));
+                y1--;
+            }
+            x1++;
+        }
+
+        p = (int) Math.round(Math.pow(b, 2) * Math.pow(x1, 2) + Math.pow(a, 2) * Math.pow(y1 - 1, 2) - Math.pow(a, 2) * Math.pow(b, 2));
+
+        while (y1 >= 0) {
+            drawLine(x + x1, y + y1, x + x1, y - y1);
+            drawLine(x - x1, y + y1, x - x1, y - y1);
+
+            if (p > 0) {
+                p += (int) (-2 * Math.pow(a, 2) * y1 + 3 * Math.pow(a, 2));
+            } else {
+                p += (int) (2 * Math.pow(b, 2) * x1 - 2 * Math.pow(a, 2) * y1 + 2 * Math.pow(b, 2) + 3 * Math.pow(a, 2));
+                x1++;
+            }
+            y1--;
+        }
+
+    }
+
     public static void setColorRGB(int r, int g, int b) {
         glColor3f(r / 255.0f, g / 255.0f, b / 255.0f);
     }
