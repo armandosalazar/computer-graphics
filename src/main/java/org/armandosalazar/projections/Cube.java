@@ -18,7 +18,7 @@ public class Cube {
     private final int width = 400;
     private final int height = 600;
     private int coordinate = 0;
-    final int[] projectionVector = new int[]{5, 3, 1};
+    final double[] projectionVector = new double[]{1, 1, 0};
 
     public void run() {
         init();
@@ -59,7 +59,7 @@ public class Cube {
     private void cube() {
         // Draw a white pixel in the center of the screen
         Graphics.setColorRGB(new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255));
-        int scale = 20;
+        int scale = 30;
 
         final double[][] points = {{3, 2, 2}, {3, 4, 3}, {5, 2, 2}, {5, 4, 3}, {2, 3, 2}, {2, 5, 4}, {4, 3, 2}, {4, 5, 4}};
 
@@ -108,45 +108,22 @@ public class Cube {
         glfwSetKeyCallback(WINDOW, (window, key, scancode, action, mods) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) glfwSetWindowShouldClose(window, true);
             if (key == GLFW_KEY_X && action == GLFW_RELEASE) {
-                System.out.println("X: " + projectionVector[0]);
                 coordinate = 0;
             }
             if (key == GLFW_KEY_Y && action == GLFW_RELEASE) {
-                System.out.println("Y: " + projectionVector[1]);
                 coordinate = 1;
             }
             if (key == GLFW_KEY_Z && action == GLFW_RELEASE) {
-                System.out.println("Z: " + projectionVector[2]);
                 coordinate = 2;
             }
             if (key == GLFW_KEY_RIGHT_BRACKET) {
-                switch (coordinate) {
-                    case 0:
-                        System.out.println("X: " + projectionVector[0]);
-                        break;
-                    case 1:
-                        System.out.println("Y: " + projectionVector[1]);
-                        break;
-                    case 2:
-                        System.out.println("Z: " + projectionVector[2]);
-                        break;
-                }
-                projectionVector[coordinate]++;
+                projectionVector[coordinate] += .5;
             }
             if (key == GLFW_KEY_SLASH) {
-                switch (coordinate) {
-                    case 0:
-                        System.out.println("X: " + projectionVector[0]);
-                        break;
-                    case 1:
-                        System.out.println("Y: " + projectionVector[1]);
-                        break;
-                    case 2:
-                        System.out.println("Z: " + projectionVector[2]);
-                        break;
-                }
-                projectionVector[coordinate]--;
+                projectionVector[coordinate] -= .5;
             }
+            if (key == GLFW_KEY_M && action == GLFW_RELEASE)
+                System.out.println("{ x: " + projectionVector[0] + ", y:" + projectionVector[1] + ", z: " + projectionVector[2] + " }");
         });
 
         glfwMakeContextCurrent(WINDOW);
