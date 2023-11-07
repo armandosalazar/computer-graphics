@@ -18,7 +18,7 @@ public class Cube {
     private final int width = 400;
     private final int height = 600;
     private int coordinate = 0;
-    final double[] projectionVector = new double[]{1, 1, 0};
+    final double[] projectionVector = new double[]{0, 0, -1};
 
     public void run() {
         init();
