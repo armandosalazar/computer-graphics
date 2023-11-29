@@ -178,6 +178,14 @@ public abstract class Graphics {
 
     }
 
+
+    public static void fillPolygon(int[] x, int[] y) {
+        for (int i = 0; i < x.length - 1; i++) {
+            drawLine(x[i], y[i], x[i + 1], y[i + 1]);
+        }
+        drawLine(x[x.length - 1], y[y.length - 1], x[0], y[0]);
+    }
+
     public static void setColorRGB(int r, int g, int b) {
         glColor3f(r / 255.0f, g / 255.0f, b / 255.0f);
     }

@@ -57,7 +57,7 @@ public class Stuffed3dCube {
 
     private void cube() {
         // Draw a white pixel in the center of the screen
-        Graphics.setColorRGB(0, 225, 125);
+        Graphics.setColorRGB(0, 0, 0);
         int scale = 30;
 
         final double[][] points = {{1, 1, 1}, {1, 3, 1}, {3, 1, 1}, {3, 3, 1}, {1, 1, 3}, {1, 3, 3}, {3, 1, 3}, {3, 3, 3}};
@@ -73,6 +73,10 @@ public class Stuffed3dCube {
             Graphics.putPixel((int) points[i][0], (int) points[i][1]);
         }
 
+
+        fill(points);
+
+        Graphics.setColorRGB(0, 0, 189);
         Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[3][0], (int) points[2][0]},
                 new int[]{(int) points[0][1], (int) points[1][1], (int) points[3][1], (int) points[2][1]});
         Graphics.drawPolygon(new int[]{(int) points[4][0], (int) points[5][0], (int) points[7][0], (int) points[6][0]},
@@ -82,13 +86,40 @@ public class Stuffed3dCube {
         Graphics.drawPolygon(new int[]{(int) points[2][0], (int) points[3][0], (int) points[7][0], (int) points[6][0]},
                 new int[]{(int) points[2][1], (int) points[3][1], (int) points[7][1], (int) points[6][1]});
 
-        // Fill the cube
-        Graphics.setColorRGB(252, 177, 3);
+    }
+
+    private static void fill(double[][] points) {
+        Graphics.setColorRGB(255, 0, 0);
         glBegin(GL_POLYGON);
         glVertex2i((int) points[0][0], (int) points[0][1]);
         glVertex2i((int) points[1][0], (int) points[1][1]);
         glVertex2i((int) points[3][0], (int) points[3][1]);
         glVertex2i((int) points[2][0], (int) points[2][1]);
+
+        glVertex2i((int) points[0][0], (int) points[0][1]);
+        glVertex2i((int) points[1][0], (int) points[1][1]);
+        glVertex2i((int) points[5][0], (int) points[5][1]);
+        glVertex2i((int) points[4][0], (int) points[4][1]);
+
+        glVertex2i((int) points[0][0], (int) points[0][1]);
+        glVertex2i((int) points[2][0], (int) points[2][1]);
+        glVertex2i((int) points[6][0], (int) points[6][1]);
+        glVertex2i((int) points[4][0], (int) points[4][1]);
+
+        glVertex2i((int) points[1][0], (int) points[1][1]);
+        glVertex2i((int) points[3][0], (int) points[3][1]);
+        glVertex2i((int) points[7][0], (int) points[7][1]);
+        glVertex2i((int) points[5][0], (int) points[5][1]);
+
+        glVertex2i((int) points[2][0], (int) points[2][1]);
+        glVertex2i((int) points[3][0], (int) points[3][1]);
+        glVertex2i((int) points[7][0], (int) points[7][1]);
+        glVertex2i((int) points[6][0], (int) points[6][1]);
+
+        glVertex2i((int) points[4][0], (int) points[4][1]);
+        glVertex2i((int) points[5][0], (int) points[5][1]);
+        glVertex2i((int) points[7][0], (int) points[7][1]);
+        glVertex2i((int) points[6][0], (int) points[6][1]);
         glEnd();
     }
 
