@@ -12,12 +12,12 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
-public class Cube {
+public class CubeV2 {
     private long WINDOW;
     private final int width = 400;
     private final int height = 600;
     private int coordinate = 0;
-    final double[] projectionVector = new double[]{0, 0, -1};
+    final double[] center = new double[]{2, 2, 5};
 
     public void run() {
         init();
@@ -31,7 +31,7 @@ public class Cube {
     }
 
     public static void main(String[] args) {
-        new Cube().run();
+        new CubeV2().run();
     }
 
     private void loop() {
@@ -58,37 +58,36 @@ public class Cube {
     private void cube() {
         // Draw a white pixel in the center of the screen
         Graphics.setColorRGB(0, 225, 125);
-        int scale = 35;
+        int scale = 30;
 
-        final double[][] points = {{3, 2, 2}, {3, 4, 3}, {5, 2, 2}, {5, 4, 3}, {2, 3, 2}, {2, 5, 4}, {4, 3, 2}, {4, 5, 4}};
+        final double[][] points = {{1, 1, 1}, {1, 3, 1}, {3, 1, 1}, {3, 3, 1}, {1, 1, 3}, {1, 3, 3}, {3, 1, 3}, {3, 3, 3}};
+
 
         for (int i = 0; i < points.length; i++) {
-            double u = -points[i][2] * projectionVector[2];
-            points[i][0] = points[i][0] + projectionVector[0] * u;
-            points[i][1] = points[i][1] + projectionVector[1] * u;
-            // System.out.println("x: " + points[i][0] + ",y: " + points[i][1]);
+            double u = -center[2] / (points[i][2] - center[2]);
+            points[i][0] = center[0] + (points[i][0] - center[0]) * u;
+            points[i][1] = center[1] + (points[i][1] - center[1]) * u;
+
             points[i][0] *= scale;
             points[i][1] *= scale;
             Graphics.putPixel((int) points[i][0], (int) points[i][1]);
         }
 
-        // System.out.println();
-
-        // int points = 1000;
-        for (int i = 1; i < points.length; i += 2) {
-            // System.out.println("x: " + points[i - 1][0] + ",y: " + points[i - 1][1]);
-            // System.out.println("x: " + points[i][0] + ",y: " + points[i][1]);
-            Graphics.drawLine((int) points[i - 1][0], (int) points[i - 1][1], (int) points[i][0], (int) points[i][1]);
-        }
-
+        Graphics.drawLine((int) points[0][0], (int) points[0][1], (int) points[1][0], (int) points[1][1]);
         Graphics.drawLine((int) points[0][0], (int) points[0][1], (int) points[2][0], (int) points[2][1]);
         Graphics.drawLine((int) points[1][0], (int) points[1][1], (int) points[3][0], (int) points[3][1]);
+        Graphics.drawLine((int) points[2][0], (int) points[2][1], (int) points[3][0], (int) points[3][1]);
+
+        Graphics.drawLine((int) points[4][0], (int) points[4][1], (int) points[5][0], (int) points[5][1]);
+        Graphics.drawLine((int) points[4][0], (int) points[4][1], (int) points[6][0], (int) points[6][1]);
+        Graphics.drawLine((int) points[5][0], (int) points[5][1], (int) points[7][0], (int) points[7][1]);
+        Graphics.drawLine((int) points[6][0], (int) points[6][1], (int) points[7][0], (int) points[7][1]);
+
         Graphics.drawLine((int) points[0][0], (int) points[0][1], (int) points[4][0], (int) points[4][1]);
         Graphics.drawLine((int) points[1][0], (int) points[1][1], (int) points[5][0], (int) points[5][1]);
         Graphics.drawLine((int) points[2][0], (int) points[2][1], (int) points[6][0], (int) points[6][1]);
-        Graphics.drawLine((int) points[5][0], (int) points[5][1], (int) points[7][0], (int) points[7][1]);
-        Graphics.drawLine((int) points[4][0], (int) points[4][1], (int) points[6][0], (int) points[6][1]);
         Graphics.drawLine((int) points[3][0], (int) points[3][1], (int) points[7][0], (int) points[7][1]);
+
 
     }
 
@@ -116,13 +115,13 @@ public class Cube {
                 coordinate = 2;
             }
             if (key == GLFW_KEY_RIGHT_BRACKET) {
-                projectionVector[coordinate] += .5;
+                center[coordinate] += .5;
             }
             if (key == GLFW_KEY_SLASH) {
-                projectionVector[coordinate] -= .5;
+                center[coordinate] -= .5;
             }
             if (key == GLFW_KEY_M && action == GLFW_RELEASE)
-                System.out.println("{ x: " + projectionVector[0] + ", y:" + projectionVector[1] + ", z: " + projectionVector[2] + " }");
+                System.out.println("{ x: " + center[0] + ", y:" + center[1] + ", z: " + center[2] + " }");
         });
 
         glfwMakeContextCurrent(WINDOW);

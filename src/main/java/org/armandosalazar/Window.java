@@ -93,7 +93,7 @@ public class Window {
             Graphics.setColorRGB(252, 177, 3);
             Graphics.putPixel(0, 0);
 
-            Graphics.drawPolygon(new int[]{0, 100, 200}, new int[]{0, 100, 0}, 3);
+            Graphics.drawPolygon(new int[]{0, 100, 200}, new int[]{0, 100, 0});
 
             glfwSwapBuffers(window);
             glfwPollEvents();

@@ -9,7 +9,6 @@ public abstract class Graphics {
         glEnd();
     }
 
-
     public static void drawLine(int x1, int y1, int x2, int y2) {
         int dx = x2 - x1;
         int dy = y2 - y1;
@@ -108,11 +107,11 @@ public abstract class Graphics {
         drawLine(x3, y3, x1, y1);
     }
 
-    public static void drawPolygon(int[] x, int[] y, int n) {
-        for (int i = 0; i < n - 1; i++) {
+    public static void drawPolygon(int[] x, int[] y) {
+        for (int i = 0; i < x.length - 1; i++) {
             drawLine(x[i], y[i], x[i + 1], y[i + 1]);
         }
-        drawLine(x[n - 1], y[n - 1], x[0], y[0]);
+        drawLine(x[x.length - 1], y[y.length - 1], x[0], y[0]);
     }
 
     public static void fillRect(int x, int y, int width, int height) {
