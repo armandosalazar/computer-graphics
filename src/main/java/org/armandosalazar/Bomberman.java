@@ -37,7 +37,6 @@ public class Bomberman {
     private int direction = 2; // 1 = up, 2 = down
     private boolean state = true;
     private long lastTime;
-    private final long delay = 250; // 1 second
     int counterTimeBomb = 0;
 
     public void run() {
@@ -117,6 +116,8 @@ public class Bomberman {
 
             // Animation.bomb(10, -100, stateBomb);
             long currentTime = System.currentTimeMillis();
+            // 1 second
+            long delay = 250;
             if (currentTime - lastTime > delay) {
                 state = !state;
                 lastTime = currentTime;
@@ -164,8 +165,6 @@ public class Bomberman {
 
             // Draw terrain
             Animation.terrain(terrain, state);
-            // Animation.fire(0, 0);
-
 
             glfwSwapBuffers(window);
             glfwPollEvents();
