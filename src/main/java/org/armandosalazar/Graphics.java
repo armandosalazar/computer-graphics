@@ -180,10 +180,47 @@ public abstract class Graphics {
 
 
     public static void fillPolygon(int[] x, int[] y) {
-        for (int i = 0; i < x.length - 1; i++) {
-            drawLine(x[i], y[i], x[i + 1], y[i + 1]);
+        glBegin(GL_POLYGON);
+        for (int i = 0; i < x.length; i++) {
+            glVertex2i(x[i], y[i]);
         }
-        drawLine(x[x.length - 1], y[y.length - 1], x[0], y[0]);
+        glEnd();
+    }
+
+    public static double[][] rotateCube(double[][] points, double angleX, double angleY, double angleZ) {
+        // Crear matrices de rotación
+        double[][] rotationX = {
+                {1, 0, 0},
+                {0, Math.cos(angleX), -Math.sin(angleX)},
+                {0, Math.sin(angleX), Math.cos(angleX)}
+        };
+        double[][] rotationY = {
+                {Math.cos(angleY), 0, Math.sin(angleY)},
+                {0, 1, 0},
+                {-Math.sin(angleY), 0, Math.cos(angleY)}
+        };
+        double[][] rotationZ = {{Math.cos(angleZ), -Math.sin(angleZ), 0}, {Math.sin(angleZ), Math.cos(angleZ), 0}, {0, 0, 1}};
+
+        // Rotar puntos
+        double[][] rotatedPoints = new double[points.length][3];
+        for (int i = 0; i < points.length; i++) {
+            // Rotar alrededor del eje x
+            for (int j = 0; j < 3; j++) {
+                rotatedPoints[i][j] = points[i][0] * rotationX[j][0] + points[i][1] * rotationX[j][1] + points[i][2] * rotationX[j][2];
+            }
+            // Rotar alrededor del eje y
+            double[] temp = rotatedPoints[i].clone();
+            for (int j = 0; j < 3; j++) {
+                rotatedPoints[i][j] = temp[0] * rotationY[j][0] + temp[1] * rotationY[j][1] + temp[2] * rotationY[j][2];
+            }
+            // Rotar alrededor del eje z
+            temp = rotatedPoints[i].clone();
+            for (int j = 0; j < 3; j++) {
+                rotatedPoints[i][j] = temp[0] * rotationZ[j][0] + temp[1] * rotationZ[j][1] + temp[2] * rotationZ[j][2];
+            }
+        }
+
+        return rotatedPoints;
     }
 
     public static void setColorRGB(int r, int g, int b) {

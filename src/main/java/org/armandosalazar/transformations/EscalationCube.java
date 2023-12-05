@@ -26,41 +26,6 @@ public class EscalationCube {
         new EscalationCube().run();
     }
 
-    private static void fill(double[][] points) {
-        Graphics.setColorRGB(255, 0, 0);
-        glBegin(GL_POLYGON);
-        glVertex2i((int) points[0][0], (int) points[0][1]);
-        glVertex2i((int) points[1][0], (int) points[1][1]);
-        glVertex2i((int) points[3][0], (int) points[3][1]);
-        glVertex2i((int) points[2][0], (int) points[2][1]);
-
-        glVertex2i((int) points[0][0], (int) points[0][1]);
-        glVertex2i((int) points[1][0], (int) points[1][1]);
-        glVertex2i((int) points[5][0], (int) points[5][1]);
-        glVertex2i((int) points[4][0], (int) points[4][1]);
-
-        glVertex2i((int) points[0][0], (int) points[0][1]);
-        glVertex2i((int) points[2][0], (int) points[2][1]);
-        glVertex2i((int) points[6][0], (int) points[6][1]);
-        glVertex2i((int) points[4][0], (int) points[4][1]);
-
-        glVertex2i((int) points[1][0], (int) points[1][1]);
-        glVertex2i((int) points[3][0], (int) points[3][1]);
-        glVertex2i((int) points[7][0], (int) points[7][1]);
-        glVertex2i((int) points[5][0], (int) points[5][1]);
-
-        glVertex2i((int) points[2][0], (int) points[2][1]);
-        glVertex2i((int) points[3][0], (int) points[3][1]);
-        glVertex2i((int) points[7][0], (int) points[7][1]);
-        glVertex2i((int) points[6][0], (int) points[6][1]);
-
-        glVertex2i((int) points[4][0], (int) points[4][1]);
-        glVertex2i((int) points[5][0], (int) points[5][1]);
-        glVertex2i((int) points[7][0], (int) points[7][1]);
-        glVertex2i((int) points[6][0], (int) points[6][1]);
-        glEnd();
-    }
-
     public void run() {
         init();
         loop();
@@ -123,10 +88,14 @@ public class EscalationCube {
             Graphics.putPixel((int) points[i][0], (int) points[i][1]);
         }
 
-
-        fill(points);
-
-        Graphics.setColorRGB(0, 0, 189);
+        // Fill cube
+        Graphics.setColorRGB(0, 255, 0);
+        Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[3][0], (int) points[2][0]}, new int[]{(int) points[0][1], (int) points[1][1], (int) points[3][1], (int) points[2][1]});
+        Graphics.fillPolygon(new int[]{(int) points[4][0], (int) points[5][0], (int) points[7][0], (int) points[6][0]}, new int[]{(int) points[4][1], (int) points[5][1], (int) points[7][1], (int) points[6][1]});
+        Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[5][0], (int) points[4][0]}, new int[]{(int) points[0][1], (int) points[1][1], (int) points[5][1], (int) points[4][1]});
+        Graphics.fillPolygon(new int[]{(int) points[2][0], (int) points[3][0], (int) points[7][0], (int) points[6][0]}, new int[]{(int) points[2][1], (int) points[3][1], (int) points[7][1], (int) points[6][1]});
+        // Draw cube
+        Graphics.setColorRGB(0, 0, 255);
         Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[3][0], (int) points[2][0]},
                 new int[]{(int) points[0][1], (int) points[1][1], (int) points[3][1], (int) points[2][1]});
         Graphics.drawPolygon(new int[]{(int) points[4][0], (int) points[5][0], (int) points[7][0], (int) points[6][0]},
@@ -135,8 +104,6 @@ public class EscalationCube {
                 new int[]{(int) points[0][1], (int) points[1][1], (int) points[5][1], (int) points[4][1]});
         Graphics.drawPolygon(new int[]{(int) points[2][0], (int) points[3][0], (int) points[7][0], (int) points[6][0]},
                 new int[]{(int) points[2][1], (int) points[3][1], (int) points[7][1], (int) points[6][1]});
-
-
     }
 
     private void init() {

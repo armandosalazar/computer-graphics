@@ -19,8 +19,6 @@ public class RotationCube {
     private int coordinate = 0;
     final double[] center = new double[]{2, 2, 5};
     private int angle = 0;
-    private boolean flag = true;
-
     public void run() {
         init();
         loop();
@@ -58,13 +56,10 @@ public class RotationCube {
     }
 
     private void cube() {
-        // Draw a white pixel in the center of the screen
-        Graphics.setColorRGB(0, 0, 0);
-        int scale = 30;
-
         final double[][] points = {{1, 1, 1}, {1, 3, 1}, {3, 1, 1}, {3, 3, 1}, {1, 1, 3}, {1, 3, 3}, {3, 1, 3}, {3, 3, 3}};
 
-
+        // Escalar puntos
+        int scale = 30;
         for (int i = 0; i < points.length; i++) {
             double u = -center[2] / (points[i][2] - center[2]);
             points[i][0] = center[0] + (points[i][0] - center[0]) * u;
@@ -72,114 +67,30 @@ public class RotationCube {
 
             points[i][0] *= scale;
             points[i][1] *= scale;
-            Graphics.putPixel((int) points[i][0], (int) points[i][1]);
         }
 
+        double[][] rotatedPoints = Graphics.rotateCube(points, Math.toRadians(0), Math.toRadians(0), Math.toRadians(angle));
 
-//        fill(points);
-//
-//        Graphics.setColorRGB(0, 0, 189);
-//        Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[3][0], (int) points[2][0]},
-//                new int[]{(int) points[0][1], (int) points[1][1], (int) points[3][1], (int) points[2][1]});
-//        Graphics.drawPolygon(new int[]{(int) points[4][0], (int) points[5][0], (int) points[7][0], (int) points[6][0]},
-//                new int[]{(int) points[4][1], (int) points[5][1], (int) points[7][1], (int) points[6][1]});
-//        Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[5][0], (int) points[4][0]},
-//                new int[]{(int) points[0][1], (int) points[1][1], (int) points[5][1], (int) points[4][1]});
-//        Graphics.drawPolygon(new int[]{(int) points[2][0], (int) points[3][0], (int) points[7][0], (int) points[6][0]},
-//                new int[]{(int) points[2][1], (int) points[3][1], (int) points[7][1], (int) points[6][1]});
+        // Fill cube
+        Graphics.setColorRGB(0, 0, 250);
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[3][0], (int) rotatedPoints[2][0]}, new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[3][1], (int) rotatedPoints[2][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[4][0], (int) rotatedPoints[5][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]}, new int[]{(int) rotatedPoints[4][1], (int) rotatedPoints[5][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[5][0], (int) rotatedPoints[4][0]}, new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[5][1], (int) rotatedPoints[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[2][0], (int) rotatedPoints[3][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]}, new int[]{(int) rotatedPoints[2][1], (int) rotatedPoints[3][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
 
-
-        rotateCube(points, Math.toRadians(45), Math.toRadians(45));
-
-
-    }
-
-    private static void fill(double[][] points) {
+        // Draw cube
         Graphics.setColorRGB(255, 0, 0);
-        glBegin(GL_POLYGON);
-        glVertex2i((int) points[0][0], (int) points[0][1]);
-        glVertex2i((int) points[1][0], (int) points[1][1]);
-        glVertex2i((int) points[3][0], (int) points[3][1]);
-        glVertex2i((int) points[2][0], (int) points[2][1]);
+        Graphics.drawPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[3][0], (int) rotatedPoints[2][0]}, new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[3][1], (int) rotatedPoints[2][1]});
+        Graphics.drawPolygon(new int[]{(int) rotatedPoints[4][0], (int) rotatedPoints[5][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]}, new int[]{(int) rotatedPoints[4][1], (int) rotatedPoints[5][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
+        Graphics.drawPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[5][0], (int) rotatedPoints[4][0]}, new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[5][1], (int) rotatedPoints[4][1]});
+        Graphics.drawPolygon(new int[]{(int) rotatedPoints[2][0], (int) rotatedPoints[3][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]}, new int[]{(int) rotatedPoints[2][1], (int) rotatedPoints[3][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
 
-        glVertex2i((int) points[0][0], (int) points[0][1]);
-        glVertex2i((int) points[1][0], (int) points[1][1]);
-        glVertex2i((int) points[5][0], (int) points[5][1]);
-        glVertex2i((int) points[4][0], (int) points[4][1]);
-
-        glVertex2i((int) points[0][0], (int) points[0][1]);
-        glVertex2i((int) points[2][0], (int) points[2][1]);
-        glVertex2i((int) points[6][0], (int) points[6][1]);
-        glVertex2i((int) points[4][0], (int) points[4][1]);
-
-        glVertex2i((int) points[1][0], (int) points[1][1]);
-        glVertex2i((int) points[3][0], (int) points[3][1]);
-        glVertex2i((int) points[7][0], (int) points[7][1]);
-        glVertex2i((int) points[5][0], (int) points[5][1]);
-
-        glVertex2i((int) points[2][0], (int) points[2][1]);
-        glVertex2i((int) points[3][0], (int) points[3][1]);
-        glVertex2i((int) points[7][0], (int) points[7][1]);
-        glVertex2i((int) points[6][0], (int) points[6][1]);
-
-        glVertex2i((int) points[4][0], (int) points[4][1]);
-        glVertex2i((int) points[5][0], (int) points[5][1]);
-        glVertex2i((int) points[7][0], (int) points[7][1]);
-        glVertex2i((int) points[6][0], (int) points[6][1]);
-        glEnd();
-
-
-    }
-
-    public void rotateCubeX(double[][] points, double angle) {
-        // Crear matriz de rotación
-        double[][] rotation = {
-                {1, 0, 0},
-                {0, Math.cos(angle), -Math.sin(angle)},
-                {0, Math.sin(angle), Math.cos(angle)}
-        };
-
-        // Rotar puntos
-        double[][] rotatedPoints = new double[points.length][3];
-        for (int i = 0; i < points.length; i++) {
-            for (int j = 0; j < 3; j++) {
-                rotatedPoints[i][j] = points[i][0] * rotation[j][0] + points[i][1] * rotation[j][1] + points[i][2] * rotation[j][2];
-            }
+        if (angle > 360) {
+            angle = 0;
+        } else {
+            angle++;
         }
 
-        // Dibujar cubo con puntos rotados
-        fill(rotatedPoints);
-    }
-
-    public void rotateCube(double[][] points, double angleX, double angleY) {
-        // Crear matrices de rotación
-        double[][] rotationX = {
-                {1, 0, 0},
-                {0, Math.cos(angleX), -Math.sin(angleX)},
-                {0, Math.sin(angleX), Math.cos(angleX)}
-        };
-        double[][] rotationY = {
-                {Math.cos(angleY), 0, Math.sin(angleY)},
-                {0, 1, 0},
-                {-Math.sin(angleY), 0, Math.cos(angleY)}
-        };
-
-        // Rotar puntos
-        double[][] rotatedPoints = new double[points.length][3];
-        for (int i = 0; i < points.length; i++) {
-            // Rotar alrededor del eje x
-            for (int j = 0; j < 3; j++) {
-                rotatedPoints[i][j] = points[i][0] * rotationX[j][0] + points[i][1] * rotationX[j][1] + points[i][2] * rotationX[j][2];
-            }
-            // Rotar alrededor del eje y
-            double[] temp = rotatedPoints[i].clone();
-            for (int j = 0; j < 3; j++) {
-                rotatedPoints[i][j] = temp[0] * rotationY[j][0] + temp[1] * rotationY[j][1] + temp[2] * rotationY[j][2];
-            }
-        }
-
-        // Dibujar cubo con puntos rotados
-        fill(rotatedPoints);
 
     }
 
