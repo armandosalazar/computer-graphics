@@ -120,7 +120,7 @@ public class CubeV2 {
             if (key == GLFW_KEY_SLASH) {
                 center[coordinate] -= .5;
             }
-            if (key == GLFW_KEY_M && action == GLFW_RELEASE)
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
                 System.out.println("{ x: " + center[0] + ", y:" + center[1] + ", z: " + center[2] + " }");
         });
 

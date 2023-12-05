@@ -17,7 +17,8 @@ public class RotationCube {
     private final int width = 400;
     private final int height = 600;
     private int coordinate = 0;
-    final double[] center = new double[]{2, 2, 5};
+    // final double[] center = new double[]{2, 2, 5};
+    final double[] center = new double[]{0, 0, 9};
     private int angle = 0;
     public void run() {
         init();
@@ -123,7 +124,7 @@ public class RotationCube {
             if (key == GLFW_KEY_SLASH) {
                 center[coordinate] -= .5;
             }
-            if (key == GLFW_KEY_M && action == GLFW_RELEASE)
+            if (key == GLFW_KEY_SPACE && action == GLFW_RELEASE)
                 System.out.println("{ x: " + center[0] + ", y:" + center[1] + ", z: " + center[2] + " }");
         });
 
