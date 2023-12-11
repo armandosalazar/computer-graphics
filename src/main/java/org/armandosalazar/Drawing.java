@@ -10,7 +10,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
-public class Roblox {
+public class Drawing {
     private long WINDOW;
     private final int width = 800;
     private final int height = 600;
@@ -378,6 +378,6 @@ public class Roblox {
     }
 
     public static void main(String[] args) {
-        new Roblox().run();
+        new Drawing().run();
     }
 }
