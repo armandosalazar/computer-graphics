@@ -39,26 +39,18 @@ public class Drawing {
         Graphics.putPixel((int) (Math.random() * width - width / 2), (int) (Math.random() * height - height / 2));
         Graphics.putPixel((int) (Math.random() * width - width / 2), (int) (Math.random() * height - height / 2));
 
+        // TODO: Draw random asteroids gray with method Graphics.fillPolygon
+        Graphics.setColorRGB(173, 213, 219);
+        int[] xPoints = {(int) (Math.random() * width - width / 2), (int) (Math.random() * width - width / 2), (int) (Math.random() * width - width / 2)};
+        int[] yPoints = {(int) (Math.random() * height - height / 2), (int) (Math.random() * height - height / 2), (int) (Math.random() * height - height / 2)};
+        Graphics.fillPolygon(xPoints, yPoints);
+
+
+
         // TODO: Draw the spacecraft
-        Graphics.setColorRGB(128, 128, 128); // Gray color
-        double[][] points = {{1, 1, 1}, {1, 3, 1}, {3, 1, 1}, {3, 3, 1}, {1, 1, 3}, {1, 3, 3}, {3, 1, 3}, {3, 3, 3}};
-        double[][] pointsWingsLeft = {{.0, 1, 1}, {.5, 2, 1}, {2, 1, 1}, {2, 2, 1}, {.0, 1, 2}, {.5, 2, 2}, {2, 1, 2}, {2, 2, 2}};
-        double[][] pointsWingsRight = {{1, 1, 1}, {1.5, 2, 1}, {4, 1, 1}, {3.5, 2, 1}, {1, 1, 2}, {1.5, 2, 2}, {4, 1, 2}, {3.5, 2, 2}};
-
-        if (scale > 40) {
-            flag = false;
-        } else if (scale < 10) {
-            flag = true;
-        }
-
-        // Escalation cube
-        if (flag) {
-            scale += .08;
-        } else {
-            scale -= .08;
-            System.out.println(scale);
-        }
-
+        double[][] points = {{1.5, 1.5, 1}, {1.5, 2.5, 1}, {2.5, 1.5, 1}, {2.5, 2.5, 1}, {1, 1, 3}, {1, 3, 3}, {3, 1, 3}, {3, 3, 3}};
+        double[][] pointsWingsLeft = {{1.5, 1.5, 1}, {1.5, 2.5, 1}, {1, 1.5, 1}, {1, 1.5, 1}, {1, 1, 3}, {1, 3, 3}, {-1, 0, 3}, {-1, 0, 3}};
+        double[][] pointsWingsRight = {{2.5, 1.5, 1}, {2.5, 2.5, 1}, {3, 1.5, 1}, {3, 1.5, 1}, {3, 1, 3}, {3, 3, 3}, {5, 0, 3}, {5, 0, 3}};
 
         for (int i = 0; i < points.length; i++) {
             double u = -centerProjection[2] / (points[i][2] - centerProjection[2]);
@@ -76,12 +68,12 @@ public class Drawing {
             pointsWingsRight[i][0] *= scale;
             pointsWingsRight[i][1] *= scale;
 
+            Graphics.putPixel((int) pointsWingsLeft[i][0], (int) pointsWingsLeft[i][1]);
             Graphics.putPixel((int) pointsWingsRight[i][0], (int) pointsWingsRight[i][1]);
             Graphics.putPixel((int) points[i][0], (int) points[i][1]);
-            Graphics.putPixel((int) pointsWingsLeft[i][0], (int) pointsWingsLeft[i][1]);
         }
 
-        // Body
+        Graphics.setColorRGB(255, 255, 255);
         Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[3][0], (int) points[2][0]},
                 new int[]{(int) points[0][1], (int) points[1][1], (int) points[3][1], (int) points[2][1]});
         Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[5][0], (int) points[4][0]},
@@ -94,214 +86,95 @@ public class Drawing {
                 new int[]{(int) points[2][1], (int) points[3][1], (int) points[7][1], (int) points[6][1]});
         Graphics.fillPolygon(new int[]{(int) points[4][0], (int) points[5][0], (int) points[7][0], (int) points[6][0]},
                 new int[]{(int) points[4][1], (int) points[5][1], (int) points[7][1], (int) points[6][1]});
-        Graphics.setColorRGB(0, 0, 0);
-        Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[3][0], (int) points[2][0]},
-                new int[]{(int) points[0][1], (int) points[1][1], (int) points[3][1], (int) points[2][1]});
-        Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[5][0], (int) points[4][0]},
-                new int[]{(int) points[0][1], (int) points[1][1], (int) points[5][1], (int) points[4][1]});
-        Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[2][0], (int) points[6][0], (int) points[4][0]},
-                new int[]{(int) points[0][1], (int) points[2][1], (int) points[6][1], (int) points[4][1]});
-        Graphics.drawPolygon(new int[]{(int) points[1][0], (int) points[3][0], (int) points[7][0], (int) points[5][0]},
-                new int[]{(int) points[1][1], (int) points[3][1], (int) points[7][1], (int) points[5][1]});
-        Graphics.drawPolygon(new int[]{(int) points[2][0], (int) points[3][0], (int) points[7][0], (int) points[6][0]},
-                new int[]{(int) points[2][1], (int) points[3][1], (int) points[7][1], (int) points[6][1]});
-        Graphics.drawPolygon(new int[]{(int) points[4][0], (int) points[5][0], (int) points[7][0], (int) points[6][0]},
-                new int[]{(int) points[4][1], (int) points[5][1], (int) points[7][1], (int) points[6][1]});
 
-        // Wings right
-        Graphics.setColorRGB(255, 0, 0);
+        // Draw Lines
+        Graphics.setColorRGB(0, 0, 0); // Black color
+        Graphics.drawLine((int) points[0][0], (int) points[0][1], (int) points[1][0], (int) points[1][1]);
+        Graphics.drawLine((int) points[0][0], (int) points[0][1], (int) points[2][0], (int) points[2][1]);
+        Graphics.drawLine((int) points[1][0], (int) points[1][1], (int) points[3][0], (int) points[3][1]);
+        Graphics.drawLine((int) points[2][0], (int) points[2][1], (int) points[3][0], (int) points[3][1]);
+        Graphics.drawLine((int) points[0][0], (int) points[0][1], (int) points[4][0], (int) points[4][1]);
+        Graphics.drawLine((int) points[1][0], (int) points[1][1], (int) points[5][0], (int) points[5][1]);
+        Graphics.drawLine((int) points[2][0], (int) points[2][1], (int) points[6][0], (int) points[6][1]);
+        Graphics.drawLine((int) points[3][0], (int) points[3][1], (int) points[7][0], (int) points[7][1]);
+        Graphics.drawLine((int) points[4][0], (int) points[4][1], (int) points[5][0], (int) points[5][1]);
+        Graphics.drawLine((int) points[4][0], (int) points[4][1], (int) points[6][0], (int) points[6][1]);
+        Graphics.drawLine((int) points[5][0], (int) points[5][1], (int) points[7][0], (int) points[7][1]);
+        Graphics.drawLine((int) points[6][0], (int) points[6][1], (int) points[7][0], (int) points[7][1]);
+
+
+        // Draw wings red
+        Graphics.setColorRGB(255, 0, 0); // Red color
         Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[2][0]},
                 new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[2][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[4][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[4][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
         Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[4][0]},
                 new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[4][1]});
+        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[2][0], (int) pointsWingsLeft[6][0], (int) pointsWingsLeft[4][0]},
+                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[2][1], (int) pointsWingsLeft[6][1], (int) pointsWingsLeft[4][1]});
+        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[1][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[5][0]},
+                new int[]{(int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[5][1]});
         Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[2][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
                 new int[]{(int) pointsWingsLeft[2][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
-        Graphics.setColorRGB(0, 0, 0);
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[2][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[2][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeft[4][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[4][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[4][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[4][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeft[2][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[2][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
-        // Wings left
-        Graphics.setColorRGB(255, 255, 255);
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[2][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[2][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[4][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[4][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[4][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[2][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[2][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
-        Graphics.setColorRGB(0, 0, 0);
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[2][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[2][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRight[4][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[4][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[4][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[4][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRight[2][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[2][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
-
-
-        Graphics.setColorRGB(128, 128, 128); // Gray color
-        for (int i = 0; i < points.length; i++) {
-            points[i][0] += 300;
-            points[i][1] -= 10;
-
-            pointsWingsLeft[i][0] += 300;
-            pointsWingsLeft[i][1] -= 10;
-            pointsWingsRight[i][0] += 300;
-            pointsWingsRight[i][1] -= 10;
-
-            Graphics.putPixel((int) pointsWingsLeft[i][0], (int) pointsWingsLeft[i][1]);
-            Graphics.putPixel((int) pointsWingsRight[i][0], (int) pointsWingsRight[i][1]);
-            Graphics.putPixel((int) points[i][0], (int) points[i][1]);
-        }
-
-        Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[3][0], (int) points[2][0]}, new int[]{(int) points[0][1], (int) points[1][1], (int) points[3][1], (int) points[2][1]});
-        Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[5][0], (int) points[4][0]}, new int[]{(int) points[0][1], (int) points[1][1], (int) points[5][1], (int) points[4][1]});
-        Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[2][0], (int) points[6][0], (int) points[4][0]}, new int[]{(int) points[0][1], (int) points[2][1], (int) points[6][1], (int) points[4][1]});
-        Graphics.fillPolygon(new int[]{(int) points[1][0], (int) points[3][0], (int) points[7][0], (int) points[5][0]}, new int[]{(int) points[1][1], (int) points[3][1], (int) points[7][1], (int) points[5][1]});
-        Graphics.fillPolygon(new int[]{(int) points[2][0], (int) points[3][0], (int) points[7][0], (int) points[6][0]}, new int[]{(int) points[2][1], (int) points[3][1], (int) points[7][1], (int) points[6][1]});
-        Graphics.fillPolygon(new int[]{(int) points[4][0], (int) points[5][0], (int) points[7][0], (int) points[6][0]}, new int[]{(int) points[4][1], (int) points[5][1], (int) points[7][1], (int) points[6][1]});
-        Graphics.setColorRGB(0, 0, 0);
-        Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[3][0], (int) points[2][0]}, new int[]{(int) points[0][1], (int) points[1][1], (int) points[3][1], (int) points[2][1]});
-        Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[5][0], (int) points[4][0]}, new int[]{(int) points[0][1], (int) points[1][1], (int) points[5][1], (int) points[4][1]});
-        Graphics.drawPolygon(new int[]{(int) points[0][0], (int) points[2][0], (int) points[6][0], (int) points[4][0]}, new int[]{(int) points[0][1], (int) points[2][1], (int) points[6][1], (int) points[4][1]});
-        Graphics.drawPolygon(new int[]{(int) points[1][0], (int) points[3][0], (int) points[7][0], (int) points[5][0]}, new int[]{(int) points[1][1], (int) points[3][1], (int) points[7][1], (int) points[5][1]});
-        Graphics.drawPolygon(new int[]{(int) points[2][0], (int) points[3][0], (int) points[7][0], (int) points[6][0]}, new int[]{(int) points[2][1], (int) points[3][1], (int) points[7][1], (int) points[6][1]});
-        Graphics.drawPolygon(new int[]{(int) points[4][0], (int) points[5][0], (int) points[7][0], (int) points[6][0]}, new int[]{(int) points[4][1], (int) points[5][1], (int) points[7][1], (int) points[6][1]});
-
-        // Wings right
-        Graphics.setColorRGB(255, 0, 0);
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[2][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[2][1]});
         Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[4][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
                 new int[]{(int) pointsWingsLeft[4][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[4][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[2][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[2][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
-        Graphics.setColorRGB(0, 0, 0);
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[2][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[2][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeft[4][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[4][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[4][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[4][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeft[2][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[2][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
-        // Wings left
-        Graphics.setColorRGB(255, 255, 255);
+
         Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[2][0]},
                 new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[2][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[4][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[4][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
         Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[4][0]},
                 new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[4][1]});
+        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[2][0], (int) pointsWingsRight[6][0], (int) pointsWingsRight[4][0]},
+                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[2][1], (int) pointsWingsRight[6][1], (int) pointsWingsRight[4][1]});
+        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[1][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[5][0]},
+                new int[]{(int) pointsWingsRight[1][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[5][1]});
         Graphics.fillPolygon(new int[]{(int) pointsWingsRight[2][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
                 new int[]{(int) pointsWingsRight[2][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
-        Graphics.setColorRGB(0, 0, 0);
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[2][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[2][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRight[4][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
+        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[4][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
                 new int[]{(int) pointsWingsRight[4][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[4][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[4][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRight[2][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[2][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
 
-        Graphics.setColorRGB(128, 128, 128); // Gray color
-        for (int i = 0; i < points.length; i++) {
-            points[i][0] -= 200;
-            points[i][1] -= 200;
+        // Draw Lines
+        Graphics.setColorRGB(0, 0, 0); // Black color
+        Graphics.drawLine((int) pointsWingsLeft[0][0], (int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[1][1]);
+        Graphics.drawLine((int) pointsWingsLeft[0][0], (int) pointsWingsLeft[0][1], (int) pointsWingsLeft[2][0], (int) pointsWingsLeft[2][1]);
+        Graphics.drawLine((int) pointsWingsLeft[1][0], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[3][1]);
+        Graphics.drawLine((int) pointsWingsLeft[2][0], (int) pointsWingsLeft[2][1], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[3][1]);
+        Graphics.drawLine((int) pointsWingsLeft[0][0], (int) pointsWingsLeft[0][1], (int) pointsWingsLeft[4][0], (int) pointsWingsLeft[4][1]);
+        Graphics.drawLine((int) pointsWingsLeft[1][0], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[5][1]);
+        Graphics.drawLine((int) pointsWingsLeft[2][0], (int) pointsWingsLeft[2][1], (int) pointsWingsLeft[6][0], (int) pointsWingsLeft[6][1]);
+        Graphics.drawLine((int) pointsWingsLeft[3][0], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[7][1]);
+        Graphics.drawLine((int) pointsWingsLeft[4][0], (int) pointsWingsLeft[4][1], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[5][1]);
+        Graphics.drawLine((int) pointsWingsLeft[4][0], (int) pointsWingsLeft[4][1], (int) pointsWingsLeft[6][0], (int) pointsWingsLeft[6][1]);
+        Graphics.drawLine((int) pointsWingsLeft[5][0], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[7][1]);
+        Graphics.drawLine((int) pointsWingsLeft[6][0], (int) pointsWingsLeft[6][1], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[7][1]);
 
-            pointsWingsLeft[i][0] -= 200;
-            pointsWingsLeft[i][1] -= 200;
-            pointsWingsRight[i][0] -= 200;
-            pointsWingsRight[i][1] -= 200;
+        Graphics.drawLine((int) pointsWingsRight[0][0], (int) pointsWingsRight[0][1], (int) pointsWingsRight[1][0], (int) pointsWingsRight[1][1]);
+        Graphics.drawLine((int) pointsWingsRight[0][0], (int) pointsWingsRight[0][1], (int) pointsWingsRight[2][0], (int) pointsWingsRight[2][1]);
+        Graphics.drawLine((int) pointsWingsRight[1][0], (int) pointsWingsRight[1][1], (int) pointsWingsRight[3][0], (int) pointsWingsRight[3][1]);
+        Graphics.drawLine((int) pointsWingsRight[2][0], (int) pointsWingsRight[2][1], (int) pointsWingsRight[3][0], (int) pointsWingsRight[3][1]);
+        Graphics.drawLine((int) pointsWingsRight[0][0], (int) pointsWingsRight[0][1], (int) pointsWingsRight[4][0], (int) pointsWingsRight[4][1]);
+        Graphics.drawLine((int) pointsWingsRight[1][0], (int) pointsWingsRight[1][1], (int) pointsWingsRight[5][0], (int) pointsWingsRight[5][1]);
+        Graphics.drawLine((int) pointsWingsRight[2][0], (int) pointsWingsRight[2][1], (int) pointsWingsRight[6][0], (int) pointsWingsRight[6][1]);
+        Graphics.drawLine((int) pointsWingsRight[3][0], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][0], (int) pointsWingsRight[7][1]);
+        Graphics.drawLine((int) pointsWingsRight[4][0], (int) pointsWingsRight[4][1], (int) pointsWingsRight[5][0], (int) pointsWingsRight[5][1]);
+        Graphics.drawLine((int) pointsWingsRight[4][0], (int) pointsWingsRight[4][1], (int) pointsWingsRight[6][0], (int) pointsWingsRight[6][1]);
+        Graphics.drawLine((int) pointsWingsRight[5][0], (int) pointsWingsRight[5][1], (int) pointsWingsRight[7][0], (int) pointsWingsRight[7][1]);
+        Graphics.drawLine((int) pointsWingsRight[6][0], (int) pointsWingsRight[6][1], (int) pointsWingsRight[7][0], (int) pointsWingsRight[7][1]);
 
 
-            Graphics.putPixel((int) points[i][0], (int) points[i][1]);
-            Graphics.putPixel((int) pointsWingsLeft[i][0], (int) pointsWingsLeft[i][1]);
-            Graphics.putPixel((int) pointsWingsRight[i][0], (int) pointsWingsRight[i][1]);
-        }
-
-        double[][] rotatedPoints = Graphics.rotateCube(points, Math.toRadians(0), Math.toRadians(0), Math.toRadians(angle));
-
-        if (angle > 360) {
-            angle = 0;
-        } else {
-            angle++;
-        }
-
-        Graphics.fillPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[3][0], (int) rotatedPoints[2][0]}, new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[3][1], (int) rotatedPoints[2][1]});
-        Graphics.fillPolygon(new int[]{(int) rotatedPoints[4][0], (int) rotatedPoints[5][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]}, new int[]{(int) rotatedPoints[4][1], (int) rotatedPoints[5][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
-        Graphics.fillPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[5][0], (int) rotatedPoints[4][0]}, new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[5][1], (int) rotatedPoints[4][1]});
-        Graphics.fillPolygon(new int[]{(int) rotatedPoints[2][0], (int) rotatedPoints[3][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]}, new int[]{(int) rotatedPoints[2][1], (int) rotatedPoints[3][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
-        Graphics.setColorRGB(0, 0, 0);
-        Graphics.drawPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[3][0], (int) rotatedPoints[2][0]}, new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[3][1], (int) rotatedPoints[2][1]});
-        Graphics.drawPolygon(new int[]{(int) rotatedPoints[4][0], (int) rotatedPoints[5][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]}, new int[]{(int) rotatedPoints[4][1], (int) rotatedPoints[5][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
-        Graphics.drawPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[5][0], (int) rotatedPoints[4][0]}, new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[5][1], (int) rotatedPoints[4][1]});
-        Graphics.drawPolygon(new int[]{(int) rotatedPoints[2][0], (int) rotatedPoints[3][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]}, new int[]{(int) rotatedPoints[2][1], (int) rotatedPoints[3][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
-
-        double pointsWingsLeftRotated[][] = Graphics.rotateCube(pointsWingsLeft, Math.toRadians(0), Math.toRadians(0), Math.toRadians(angle));
-        double pointsWingsRightRotated[][] = Graphics.rotateCube(pointsWingsRight, Math.toRadians(0), Math.toRadians(0), Math.toRadians(angle));
-        // Wings right
-        Graphics.setColorRGB(255, 0, 0);
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeftRotated[0][0], (int) pointsWingsLeftRotated[1][0], (int) pointsWingsLeftRotated[3][0], (int) pointsWingsLeftRotated[2][0]},
-                new int[]{(int) pointsWingsLeftRotated[0][1], (int) pointsWingsLeftRotated[1][1], (int) pointsWingsLeftRotated[3][1], (int) pointsWingsLeftRotated[2][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeftRotated[4][0], (int) pointsWingsLeftRotated[5][0], (int) pointsWingsLeftRotated[7][0], (int) pointsWingsLeftRotated[6][0]},
-                new int[]{(int) pointsWingsLeftRotated[4][1], (int) pointsWingsLeftRotated[5][1], (int) pointsWingsLeftRotated[7][1], (int) pointsWingsLeftRotated[6][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeftRotated[0][0], (int) pointsWingsLeftRotated[1][0], (int) pointsWingsLeftRotated[5][0], (int) pointsWingsLeftRotated[4][0]},
-                new int[]{(int) pointsWingsLeftRotated[0][1], (int) pointsWingsLeftRotated[1][1], (int) pointsWingsLeftRotated[5][1], (int) pointsWingsLeftRotated[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeftRotated[2][0], (int) pointsWingsLeftRotated[3][0], (int) pointsWingsLeftRotated[7][0], (int) pointsWingsLeftRotated[6][0]},
-                new int[]{(int) pointsWingsLeftRotated[2][1], (int) pointsWingsLeftRotated[3][1], (int) pointsWingsLeftRotated[7][1], (int) pointsWingsLeftRotated[6][1]});
-        Graphics.setColorRGB(0, 0, 0);
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeftRotated[0][0], (int) pointsWingsLeftRotated[1][0], (int) pointsWingsLeftRotated[3][0], (int) pointsWingsLeftRotated[2][0]},
-                new int[]{(int) pointsWingsLeftRotated[0][1], (int) pointsWingsLeftRotated[1][1], (int) pointsWingsLeftRotated[3][1], (int) pointsWingsLeftRotated[2][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeftRotated[4][0], (int) pointsWingsLeftRotated[5][0], (int) pointsWingsLeftRotated[7][0], (int) pointsWingsLeftRotated[6][0]},
-                new int[]{(int) pointsWingsLeftRotated[4][1], (int) pointsWingsLeftRotated[5][1], (int) pointsWingsLeftRotated[7][1], (int) pointsWingsLeftRotated[6][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeftRotated[0][0], (int) pointsWingsLeftRotated[1][0], (int) pointsWingsLeftRotated[5][0], (int) pointsWingsLeftRotated[4][0]},
-                new int[]{(int) pointsWingsLeftRotated[0][1], (int) pointsWingsLeftRotated[1][1], (int) pointsWingsLeftRotated[5][1], (int) pointsWingsLeftRotated[4][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsLeftRotated[2][0], (int) pointsWingsLeftRotated[3][0], (int) pointsWingsLeftRotated[7][0], (int) pointsWingsLeftRotated[6][0]},
-                new int[]{(int) pointsWingsLeftRotated[2][1], (int) pointsWingsLeftRotated[3][1], (int) pointsWingsLeftRotated[7][1], (int) pointsWingsLeftRotated[6][1]});
-        // Wings left
-        Graphics.setColorRGB(255, 255, 255);
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRightRotated[0][0], (int) pointsWingsRightRotated[1][0], (int) pointsWingsRightRotated[3][0], (int) pointsWingsRightRotated[2][0]},
-                new int[]{(int) pointsWingsRightRotated[0][1], (int) pointsWingsRightRotated[1][1], (int) pointsWingsRightRotated[3][1], (int) pointsWingsRightRotated[2][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRightRotated[4][0], (int) pointsWingsRightRotated[5][0], (int) pointsWingsRightRotated[7][0], (int) pointsWingsRightRotated[6][0]},
-                new int[]{(int) pointsWingsRightRotated[4][1], (int) pointsWingsRightRotated[5][1], (int) pointsWingsRightRotated[7][1], (int) pointsWingsRightRotated[6][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRightRotated[0][0], (int) pointsWingsRightRotated[1][0], (int) pointsWingsRightRotated[5][0], (int) pointsWingsRightRotated[4][0]},
-                new int[]{(int) pointsWingsRightRotated[0][1], (int) pointsWingsRightRotated[1][1], (int) pointsWingsRightRotated[5][1], (int) pointsWingsRightRotated[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRightRotated[2][0], (int) pointsWingsRightRotated[3][0], (int) pointsWingsRightRotated[7][0], (int) pointsWingsRightRotated[6][0]},
-                new int[]{(int) pointsWingsRightRotated[2][1], (int) pointsWingsRightRotated[3][1], (int) pointsWingsRightRotated[7][1], (int) pointsWingsRightRotated[6][1]});
-        Graphics.setColorRGB(0, 0, 0);
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRightRotated[0][0], (int) pointsWingsRightRotated[1][0], (int) pointsWingsRightRotated[3][0], (int) pointsWingsRightRotated[2][0]},
-                new int[]{(int) pointsWingsRightRotated[0][1], (int) pointsWingsRightRotated[1][1], (int) pointsWingsRightRotated[3][1], (int) pointsWingsRightRotated[2][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRightRotated[4][0], (int) pointsWingsRightRotated[5][0], (int) pointsWingsRightRotated[7][0], (int) pointsWingsRightRotated[6][0]},
-                new int[]{(int) pointsWingsRightRotated[4][1], (int) pointsWingsRightRotated[5][1], (int) pointsWingsRightRotated[7][1], (int) pointsWingsRightRotated[6][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRightRotated[0][0], (int) pointsWingsRightRotated[1][0], (int) pointsWingsRightRotated[5][0], (int) pointsWingsRightRotated[4][0]},
-                new int[]{(int) pointsWingsRightRotated[0][1], (int) pointsWingsRightRotated[1][1], (int) pointsWingsRightRotated[5][1], (int) pointsWingsRightRotated[4][1]});
-        Graphics.drawPolygon(new int[]{(int) pointsWingsRightRotated[2][0], (int) pointsWingsRightRotated[3][0], (int) pointsWingsRightRotated[7][0], (int) pointsWingsRightRotated[6][0]},
-                new int[]{(int) pointsWingsRightRotated[2][1], (int) pointsWingsRightRotated[3][1], (int) pointsWingsRightRotated[7][1], (int) pointsWingsRightRotated[6][1]});
-
-        if (centerProjection[0] > 5) {
-            flag = false;
-        } else if (centerProjection[0] <= 0.5) {
-            flag = true;
-        }
-
-        if (flag) {
-            centerProjection[0] += .02;
-        } else {
-            centerProjection[0] -= .02;
-        }
+        Graphics.setColorRGB(255, 0, 0); // White color
+        Graphics.fillCircle((int) points[4][0], (int) points[4][1], 15);
+        Graphics.fillCircle((int) points[5][0], (int) points[5][1], 15);
+        Graphics.fillCircle((int) points[6][0], (int) points[6][1], 15);
+        Graphics.fillCircle((int) points[7][0], (int) points[7][1], 15);
+        Graphics.fillCircle((int) points[4][0] + 2, (int) points[4][1], 10);
+        Graphics.setColorRGB(245, 149, 66); // Orange color
+        Graphics.fillCircle((int) points[4][0] + 75, (int) points[4][1] + 75, 55);
+        // Draw windows and lights
+        Graphics.setColorRGB(255, 255, 0); // Yellow color
+        Graphics.fillCircle((int) points[4][0], (int) points[4][1], 10);
+        Graphics.fillCircle((int) points[5][0], (int) points[5][1], 10);
+        Graphics.fillCircle((int) points[6][0], (int) points[6][1], 10);
+        Graphics.fillCircle((int) points[7][0], (int) points[7][1], 10);
+        Graphics.fillCircle((int) points[4][0] + 75, (int) points[4][1] + 75, 50);
 
 
 
