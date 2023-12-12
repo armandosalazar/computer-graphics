@@ -19,7 +19,6 @@ public class Roblox {
     private final double[] centerProjection = new double[]{2, 2, 5};
     private int angle = 0;
     private double scale = 30;
-
     private boolean flag = true;
 
     private void draw() {
