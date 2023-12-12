@@ -182,14 +182,14 @@ public class Drawing {
         Graphics.fillCircle((int) points[7][0], (int) points[7][1], 15);
         Graphics.fillCircle((int) points[4][0] + 2, (int) points[4][1], 10);
         Graphics.setColorRGB(245, 149, 66); // Orange color
-        Graphics.fillCircle((int) points[4][0] + 75, (int) points[4][1] + 75, 55);
+        // Graphics.fillCircle((int) points[4][0] + 75, (int) points[4][1] + 75, 55);
         // Draw windows and lights
         Graphics.setColorRGB(255, 255, 0); // Yellow color
         Graphics.fillCircle((int) points[4][0], (int) points[4][1], 10);
         Graphics.fillCircle((int) points[5][0], (int) points[5][1], 10);
         Graphics.fillCircle((int) points[6][0], (int) points[6][1], 10);
         Graphics.fillCircle((int) points[7][0], (int) points[7][1], 10);
-        Graphics.fillCircle((int) points[4][0] + 75, (int) points[4][1] + 75, 50);
+        // Graphics.fillCircle((int) points[4][0] + 75, (int) points[4][1] + 75, 50);
 
 
         for (int i = 0; i < points.length; i++) {
@@ -249,59 +249,59 @@ public class Drawing {
 
         // Draw wings red
         Graphics.setColorRGB(255, 0, 0); // Red color
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[2][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[2][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[4][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[2][0], (int) pointsWingsLeft[6][0], (int) pointsWingsLeft[4][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[2][1], (int) pointsWingsLeft[6][1], (int) pointsWingsLeft[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[1][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[5][0]},
-                new int[]{(int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[5][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[2][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[2][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[4][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[4][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[2][0]},
+                new int[]{(int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[3][1], (int) rotatedPointsWingsLeft[2][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[4][0]},
+                new int[]{(int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[5][1], (int) rotatedPointsWingsLeft[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[6][0], (int) rotatedPointsWingsLeft[4][0]},
+                new int[]{(int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[2][1], (int) rotatedPointsWingsLeft[6][1], (int) rotatedPointsWingsLeft[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[5][0]},
+                new int[]{(int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[3][1], (int) rotatedPointsWingsLeft[7][1], (int) rotatedPointsWingsLeft[5][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[6][0]},
+                new int[]{(int) rotatedPointsWingsLeft[2][1], (int) rotatedPointsWingsLeft[3][1], (int) rotatedPointsWingsLeft[7][1], (int) rotatedPointsWingsLeft[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[4][0], (int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[6][0]},
+                new int[]{(int) rotatedPointsWingsLeft[4][1], (int) rotatedPointsWingsLeft[5][1], (int) rotatedPointsWingsLeft[7][1], (int) rotatedPointsWingsLeft[6][1]});
 
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[2][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[2][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[4][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[2][0], (int) pointsWingsRight[6][0], (int) pointsWingsRight[4][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[2][1], (int) pointsWingsRight[6][1], (int) pointsWingsRight[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[1][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[5][0]},
-                new int[]{(int) pointsWingsRight[1][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[5][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[2][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[2][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[4][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[4][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[2][0]},
+                new int[]{(int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[3][1], (int) rotatedPointsWingsRight[2][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[4][0]},
+                new int[]{(int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[5][1], (int) rotatedPointsWingsRight[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[6][0], (int) rotatedPointsWingsRight[4][0]},
+                new int[]{(int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[2][1], (int) rotatedPointsWingsRight[6][1], (int) rotatedPointsWingsRight[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[5][0]},
+                new int[]{(int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[3][1], (int) rotatedPointsWingsRight[7][1], (int) rotatedPointsWingsRight[5][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[6][0]},
+                new int[]{(int) rotatedPointsWingsRight[2][1], (int) rotatedPointsWingsRight[3][1], (int) rotatedPointsWingsRight[7][1], (int) rotatedPointsWingsRight[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[4][0], (int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[6][0]},
+                new int[]{(int) rotatedPointsWingsRight[4][1], (int) rotatedPointsWingsRight[5][1], (int) rotatedPointsWingsRight[7][1], (int) rotatedPointsWingsRight[6][1]});
 
         // Draw Lines
         Graphics.setColorRGB(0, 0, 0); // Black color
-        Graphics.drawLine((int) pointsWingsLeft[0][0], (int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[1][1]);
-        Graphics.drawLine((int) pointsWingsLeft[0][0], (int) pointsWingsLeft[0][1], (int) pointsWingsLeft[2][0], (int) pointsWingsLeft[2][1]);
-        Graphics.drawLine((int) pointsWingsLeft[1][0], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[3][1]);
-        Graphics.drawLine((int) pointsWingsLeft[2][0], (int) pointsWingsLeft[2][1], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[3][1]);
-        Graphics.drawLine((int) pointsWingsLeft[0][0], (int) pointsWingsLeft[0][1], (int) pointsWingsLeft[4][0], (int) pointsWingsLeft[4][1]);
-        Graphics.drawLine((int) pointsWingsLeft[1][0], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[5][1]);
-        Graphics.drawLine((int) pointsWingsLeft[2][0], (int) pointsWingsLeft[2][1], (int) pointsWingsLeft[6][0], (int) pointsWingsLeft[6][1]);
-        Graphics.drawLine((int) pointsWingsLeft[3][0], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[7][1]);
-        Graphics.drawLine((int) pointsWingsLeft[4][0], (int) pointsWingsLeft[4][1], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[5][1]);
-        Graphics.drawLine((int) pointsWingsLeft[4][0], (int) pointsWingsLeft[4][1], (int) pointsWingsLeft[6][0], (int) pointsWingsLeft[6][1]);
-        Graphics.drawLine((int) pointsWingsLeft[5][0], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[7][1]);
-        Graphics.drawLine((int) pointsWingsLeft[6][0], (int) pointsWingsLeft[6][1], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[1][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[2][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[3][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[2][1], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[3][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[4][0], (int) rotatedPointsWingsLeft[4][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[5][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[2][1], (int) rotatedPointsWingsLeft[6][0], (int) rotatedPointsWingsLeft[6][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[3][1], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[4][0], (int) rotatedPointsWingsLeft[4][1], (int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[5][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[4][0], (int) rotatedPointsWingsLeft[4][1], (int) rotatedPointsWingsLeft[6][0], (int) rotatedPointsWingsLeft[6][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[5][1], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[6][0], (int) rotatedPointsWingsLeft[6][1], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[7][1]);
 
-        Graphics.drawLine((int) pointsWingsRight[0][0], (int) pointsWingsRight[0][1], (int) pointsWingsRight[1][0], (int) pointsWingsRight[1][1]);
-        Graphics.drawLine((int) pointsWingsRight[0][0], (int) pointsWingsRight[0][1], (int) pointsWingsRight[2][0], (int) pointsWingsRight[2][1]);
-        Graphics.drawLine((int) pointsWingsRight[1][0], (int) pointsWingsRight[1][1], (int) pointsWingsRight[3][0], (int) pointsWingsRight[3][1]);
-        Graphics.drawLine((int) pointsWingsRight[2][0], (int) pointsWingsRight[2][1], (int) pointsWingsRight[3][0], (int) pointsWingsRight[3][1]);
-        Graphics.drawLine((int) pointsWingsRight[0][0], (int) pointsWingsRight[0][1], (int) pointsWingsRight[4][0], (int) pointsWingsRight[4][1]);
-        Graphics.drawLine((int) pointsWingsRight[1][0], (int) pointsWingsRight[1][1], (int) pointsWingsRight[5][0], (int) pointsWingsRight[5][1]);
-        Graphics.drawLine((int) pointsWingsRight[2][0], (int) pointsWingsRight[2][1], (int) pointsWingsRight[6][0], (int) pointsWingsRight[6][1]);
-        Graphics.drawLine((int) pointsWingsRight[3][0], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][0], (int) pointsWingsRight[7][1]);
-        Graphics.drawLine((int) pointsWingsRight[4][0], (int) pointsWingsRight[4][1], (int) pointsWingsRight[5][0], (int) pointsWingsRight[5][1]);
-        Graphics.drawLine((int) pointsWingsRight[4][0], (int) pointsWingsRight[4][1], (int) pointsWingsRight[6][0], (int) pointsWingsRight[6][1]);
-        Graphics.drawLine((int) pointsWingsRight[5][0], (int) pointsWingsRight[5][1], (int) pointsWingsRight[7][0], (int) pointsWingsRight[7][1]);
-        Graphics.drawLine((int) pointsWingsRight[6][0], (int) pointsWingsRight[6][1], (int) pointsWingsRight[7][0], (int) pointsWingsRight[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[1][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[2][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[3][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[2][1], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[3][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[4][0], (int) rotatedPointsWingsRight[4][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[5][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[2][1], (int) rotatedPointsWingsRight[6][0], (int) rotatedPointsWingsRight[6][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[3][1], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[4][0], (int) rotatedPointsWingsRight[4][1], (int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[5][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[4][0], (int) rotatedPointsWingsRight[4][1], (int) rotatedPointsWingsRight[6][0], (int) rotatedPointsWingsRight[6][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[5][1], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[6][0], (int) rotatedPointsWingsRight[6][1], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[7][1]);
 
 
         Graphics.setColorRGB(255, 0, 0); // White color
@@ -320,6 +320,7 @@ public class Drawing {
         Graphics.fillCircle((int) rotatedPoints[7][0], (int) rotatedPoints[7][1], 10);
         //Graphics.fillCircle((int) rotatedPoints[4][0] + 75, (int) rotatedPoints[4][1] + 75, 50);
 
+
         for (int i = 0; i < points.length; i++) {
             points[i][0] -= 600;
             points[i][1] -= 10;
@@ -334,109 +335,118 @@ public class Drawing {
             Graphics.putPixel((int) points[i][0], (int) points[i][1]);
         }
 
+        rotatedPoints = Graphics.rotateCube(points, Math.toRadians(0), Math.toRadians(0), -Math.toRadians(angle));
+        rotatedPointsWingsLeft = Graphics.rotateCube(pointsWingsLeft, Math.toRadians(0), Math.toRadians(0), -Math.toRadians(angle));
+        rotatedPointsWingsRight = Graphics.rotateCube(pointsWingsRight, Math.toRadians(0), Math.toRadians(0), -Math.toRadians(angle));
+
+        if (angle > 360) {
+            angle = 0;
+        } else {
+            angle++;
+        }
 
         Graphics.setColorRGB(255, 255, 255);
-        Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[3][0], (int) points[2][0]},
-                new int[]{(int) points[0][1], (int) points[1][1], (int) points[3][1], (int) points[2][1]});
-        Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[1][0], (int) points[5][0], (int) points[4][0]},
-                new int[]{(int) points[0][1], (int) points[1][1], (int) points[5][1], (int) points[4][1]});
-        Graphics.fillPolygon(new int[]{(int) points[0][0], (int) points[2][0], (int) points[6][0], (int) points[4][0]},
-                new int[]{(int) points[0][1], (int) points[2][1], (int) points[6][1], (int) points[4][1]});
-        Graphics.fillPolygon(new int[]{(int) points[1][0], (int) points[3][0], (int) points[7][0], (int) points[5][0]},
-                new int[]{(int) points[1][1], (int) points[3][1], (int) points[7][1], (int) points[5][1]});
-        Graphics.fillPolygon(new int[]{(int) points[2][0], (int) points[3][0], (int) points[7][0], (int) points[6][0]},
-                new int[]{(int) points[2][1], (int) points[3][1], (int) points[7][1], (int) points[6][1]});
-        Graphics.fillPolygon(new int[]{(int) points[4][0], (int) points[5][0], (int) points[7][0], (int) points[6][0]},
-                new int[]{(int) points[4][1], (int) points[5][1], (int) points[7][1], (int) points[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[3][0], (int) rotatedPoints[2][0]},
+                new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[3][1], (int) rotatedPoints[2][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[1][0], (int) rotatedPoints[5][0], (int) rotatedPoints[4][0]},
+                new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[1][1], (int) rotatedPoints[5][1], (int) rotatedPoints[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[0][0], (int) rotatedPoints[2][0], (int) rotatedPoints[6][0], (int) rotatedPoints[4][0]},
+                new int[]{(int) rotatedPoints[0][1], (int) rotatedPoints[2][1], (int) rotatedPoints[6][1], (int) rotatedPoints[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[1][0], (int) rotatedPoints[3][0], (int) rotatedPoints[7][0], (int) rotatedPoints[5][0]},
+                new int[]{(int) rotatedPoints[1][1], (int) rotatedPoints[3][1], (int) rotatedPoints[7][1], (int) rotatedPoints[5][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[2][0], (int) rotatedPoints[3][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]},
+                new int[]{(int) rotatedPoints[2][1], (int) rotatedPoints[3][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPoints[4][0], (int) rotatedPoints[5][0], (int) rotatedPoints[7][0], (int) rotatedPoints[6][0]},
+                new int[]{(int) rotatedPoints[4][1], (int) rotatedPoints[5][1], (int) rotatedPoints[7][1], (int) rotatedPoints[6][1]});
 
         // Draw Lines
         Graphics.setColorRGB(0, 0, 0); // Black color
-        Graphics.drawLine((int) points[0][0], (int) points[0][1], (int) points[1][0], (int) points[1][1]);
-        Graphics.drawLine((int) points[0][0], (int) points[0][1], (int) points[2][0], (int) points[2][1]);
-        Graphics.drawLine((int) points[1][0], (int) points[1][1], (int) points[3][0], (int) points[3][1]);
-        Graphics.drawLine((int) points[2][0], (int) points[2][1], (int) points[3][0], (int) points[3][1]);
-        Graphics.drawLine((int) points[0][0], (int) points[0][1], (int) points[4][0], (int) points[4][1]);
-        Graphics.drawLine((int) points[1][0], (int) points[1][1], (int) points[5][0], (int) points[5][1]);
-        Graphics.drawLine((int) points[2][0], (int) points[2][1], (int) points[6][0], (int) points[6][1]);
-        Graphics.drawLine((int) points[3][0], (int) points[3][1], (int) points[7][0], (int) points[7][1]);
-        Graphics.drawLine((int) points[4][0], (int) points[4][1], (int) points[5][0], (int) points[5][1]);
-        Graphics.drawLine((int) points[4][0], (int) points[4][1], (int) points[6][0], (int) points[6][1]);
-        Graphics.drawLine((int) points[5][0], (int) points[5][1], (int) points[7][0], (int) points[7][1]);
-        Graphics.drawLine((int) points[6][0], (int) points[6][1], (int) points[7][0], (int) points[7][1]);
+        Graphics.drawLine((int) rotatedPoints[0][0], (int) rotatedPoints[0][1], (int) rotatedPoints[1][0], (int) rotatedPoints[1][1]);
+        Graphics.drawLine((int) rotatedPoints[0][0], (int) rotatedPoints[0][1], (int) rotatedPoints[2][0], (int) rotatedPoints[2][1]);
+        Graphics.drawLine((int) rotatedPoints[1][0], (int) rotatedPoints[1][1], (int) rotatedPoints[3][0], (int) rotatedPoints[3][1]);
+        Graphics.drawLine((int) rotatedPoints[2][0], (int) rotatedPoints[2][1], (int) rotatedPoints[3][0], (int) rotatedPoints[3][1]);
+        Graphics.drawLine((int) rotatedPoints[0][0], (int) rotatedPoints[0][1], (int) rotatedPoints[4][0], (int) rotatedPoints[4][1]);
+        Graphics.drawLine((int) rotatedPoints[1][0], (int) rotatedPoints[1][1], (int) rotatedPoints[5][0], (int) rotatedPoints[5][1]);
+        Graphics.drawLine((int) rotatedPoints[2][0], (int) rotatedPoints[2][1], (int) rotatedPoints[6][0], (int) rotatedPoints[6][1]);
+        Graphics.drawLine((int) rotatedPoints[3][0], (int) rotatedPoints[3][1], (int) rotatedPoints[7][0], (int) rotatedPoints[7][1]);
+        Graphics.drawLine((int) rotatedPoints[4][0], (int) rotatedPoints[4][1], (int) rotatedPoints[5][0], (int) rotatedPoints[5][1]);
+        Graphics.drawLine((int) rotatedPoints[4][0], (int) rotatedPoints[4][1], (int) rotatedPoints[6][0], (int) rotatedPoints[6][1]);
+        Graphics.drawLine((int) rotatedPoints[5][0], (int) rotatedPoints[5][1], (int) rotatedPoints[7][0], (int) rotatedPoints[7][1]);
+        Graphics.drawLine((int) rotatedPoints[6][0], (int) rotatedPoints[6][1], (int) rotatedPoints[7][0], (int) rotatedPoints[7][1]);
 
 
         // Draw wings red
         Graphics.setColorRGB(255, 0, 0); // Red color
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[2][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[2][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[4][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[0][0], (int) pointsWingsLeft[2][0], (int) pointsWingsLeft[6][0], (int) pointsWingsLeft[4][0]},
-                new int[]{(int) pointsWingsLeft[0][1], (int) pointsWingsLeft[2][1], (int) pointsWingsLeft[6][1], (int) pointsWingsLeft[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[1][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[5][0]},
-                new int[]{(int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[5][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[2][0], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[2][1], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsLeft[4][0], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[6][0]},
-                new int[]{(int) pointsWingsLeft[4][1], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[7][1], (int) pointsWingsLeft[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[2][0]},
+                new int[]{(int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[3][1], (int) rotatedPointsWingsLeft[2][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[4][0]},
+                new int[]{(int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[5][1], (int) rotatedPointsWingsLeft[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[6][0], (int) rotatedPointsWingsLeft[4][0]},
+                new int[]{(int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[2][1], (int) rotatedPointsWingsLeft[6][1], (int) rotatedPointsWingsLeft[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[5][0]},
+                new int[]{(int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[3][1], (int) rotatedPointsWingsLeft[7][1], (int) rotatedPointsWingsLeft[5][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[6][0]},
+                new int[]{(int) rotatedPointsWingsLeft[2][1], (int) rotatedPointsWingsLeft[3][1], (int) rotatedPointsWingsLeft[7][1], (int) rotatedPointsWingsLeft[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsLeft[4][0], (int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[6][0]},
+                new int[]{(int) rotatedPointsWingsLeft[4][1], (int) rotatedPointsWingsLeft[5][1], (int) rotatedPointsWingsLeft[7][1], (int) rotatedPointsWingsLeft[6][1]});
 
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[2][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[2][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[1][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[4][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[1][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[0][0], (int) pointsWingsRight[2][0], (int) pointsWingsRight[6][0], (int) pointsWingsRight[4][0]},
-                new int[]{(int) pointsWingsRight[0][1], (int) pointsWingsRight[2][1], (int) pointsWingsRight[6][1], (int) pointsWingsRight[4][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[1][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[5][0]},
-                new int[]{(int) pointsWingsRight[1][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[5][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[2][0], (int) pointsWingsRight[3][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[2][1], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
-        Graphics.fillPolygon(new int[]{(int) pointsWingsRight[4][0], (int) pointsWingsRight[5][0], (int) pointsWingsRight[7][0], (int) pointsWingsRight[6][0]},
-                new int[]{(int) pointsWingsRight[4][1], (int) pointsWingsRight[5][1], (int) pointsWingsRight[7][1], (int) pointsWingsRight[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[2][0]},
+                new int[]{(int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[3][1], (int) rotatedPointsWingsRight[2][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[4][0]},
+                new int[]{(int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[5][1], (int) rotatedPointsWingsRight[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[6][0], (int) rotatedPointsWingsRight[4][0]},
+                new int[]{(int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[2][1], (int) rotatedPointsWingsRight[6][1], (int) rotatedPointsWingsRight[4][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[5][0]},
+                new int[]{(int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[3][1], (int) rotatedPointsWingsRight[7][1], (int) rotatedPointsWingsRight[5][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[6][0]},
+                new int[]{(int) rotatedPointsWingsRight[2][1], (int) rotatedPointsWingsRight[3][1], (int) rotatedPointsWingsRight[7][1], (int) rotatedPointsWingsRight[6][1]});
+        Graphics.fillPolygon(new int[]{(int) rotatedPointsWingsRight[4][0], (int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[6][0]},
+                new int[]{(int) rotatedPointsWingsRight[4][1], (int) rotatedPointsWingsRight[5][1], (int) rotatedPointsWingsRight[7][1], (int) rotatedPointsWingsRight[6][1]});
 
         // Draw Lines
         Graphics.setColorRGB(0, 0, 0); // Black color
-        Graphics.drawLine((int) pointsWingsLeft[0][0], (int) pointsWingsLeft[0][1], (int) pointsWingsLeft[1][0], (int) pointsWingsLeft[1][1]);
-        Graphics.drawLine((int) pointsWingsLeft[0][0], (int) pointsWingsLeft[0][1], (int) pointsWingsLeft[2][0], (int) pointsWingsLeft[2][1]);
-        Graphics.drawLine((int) pointsWingsLeft[1][0], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[3][1]);
-        Graphics.drawLine((int) pointsWingsLeft[2][0], (int) pointsWingsLeft[2][1], (int) pointsWingsLeft[3][0], (int) pointsWingsLeft[3][1]);
-        Graphics.drawLine((int) pointsWingsLeft[0][0], (int) pointsWingsLeft[0][1], (int) pointsWingsLeft[4][0], (int) pointsWingsLeft[4][1]);
-        Graphics.drawLine((int) pointsWingsLeft[1][0], (int) pointsWingsLeft[1][1], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[5][1]);
-        Graphics.drawLine((int) pointsWingsLeft[2][0], (int) pointsWingsLeft[2][1], (int) pointsWingsLeft[6][0], (int) pointsWingsLeft[6][1]);
-        Graphics.drawLine((int) pointsWingsLeft[3][0], (int) pointsWingsLeft[3][1], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[7][1]);
-        Graphics.drawLine((int) pointsWingsLeft[4][0], (int) pointsWingsLeft[4][1], (int) pointsWingsLeft[5][0], (int) pointsWingsLeft[5][1]);
-        Graphics.drawLine((int) pointsWingsLeft[4][0], (int) pointsWingsLeft[4][1], (int) pointsWingsLeft[6][0], (int) pointsWingsLeft[6][1]);
-        Graphics.drawLine((int) pointsWingsLeft[5][0], (int) pointsWingsLeft[5][1], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[7][1]);
-        Graphics.drawLine((int) pointsWingsLeft[6][0], (int) pointsWingsLeft[6][1], (int) pointsWingsLeft[7][0], (int) pointsWingsLeft[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[1][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[2][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[3][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[2][1], (int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[3][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[0][0], (int) rotatedPointsWingsLeft[0][1], (int) rotatedPointsWingsLeft[4][0], (int) rotatedPointsWingsLeft[4][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[1][0], (int) rotatedPointsWingsLeft[1][1], (int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[5][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[2][0], (int) rotatedPointsWingsLeft[2][1], (int) rotatedPointsWingsLeft[6][0], (int) rotatedPointsWingsLeft[6][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[3][0], (int) rotatedPointsWingsLeft[3][1], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[4][0], (int) rotatedPointsWingsLeft[4][1], (int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[5][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[4][0], (int) rotatedPointsWingsLeft[4][1], (int) rotatedPointsWingsLeft[6][0], (int) rotatedPointsWingsLeft[6][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[5][0], (int) rotatedPointsWingsLeft[5][1], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsLeft[6][0], (int) rotatedPointsWingsLeft[6][1], (int) rotatedPointsWingsLeft[7][0], (int) rotatedPointsWingsLeft[7][1]);
 
-        Graphics.drawLine((int) pointsWingsRight[0][0], (int) pointsWingsRight[0][1], (int) pointsWingsRight[1][0], (int) pointsWingsRight[1][1]);
-        Graphics.drawLine((int) pointsWingsRight[0][0], (int) pointsWingsRight[0][1], (int) pointsWingsRight[2][0], (int) pointsWingsRight[2][1]);
-        Graphics.drawLine((int) pointsWingsRight[1][0], (int) pointsWingsRight[1][1], (int) pointsWingsRight[3][0], (int) pointsWingsRight[3][1]);
-        Graphics.drawLine((int) pointsWingsRight[2][0], (int) pointsWingsRight[2][1], (int) pointsWingsRight[3][0], (int) pointsWingsRight[3][1]);
-        Graphics.drawLine((int) pointsWingsRight[0][0], (int) pointsWingsRight[0][1], (int) pointsWingsRight[4][0], (int) pointsWingsRight[4][1]);
-        Graphics.drawLine((int) pointsWingsRight[1][0], (int) pointsWingsRight[1][1], (int) pointsWingsRight[5][0], (int) pointsWingsRight[5][1]);
-        Graphics.drawLine((int) pointsWingsRight[2][0], (int) pointsWingsRight[2][1], (int) pointsWingsRight[6][0], (int) pointsWingsRight[6][1]);
-        Graphics.drawLine((int) pointsWingsRight[3][0], (int) pointsWingsRight[3][1], (int) pointsWingsRight[7][0], (int) pointsWingsRight[7][1]);
-        Graphics.drawLine((int) pointsWingsRight[4][0], (int) pointsWingsRight[4][1], (int) pointsWingsRight[5][0], (int) pointsWingsRight[5][1]);
-        Graphics.drawLine((int) pointsWingsRight[4][0], (int) pointsWingsRight[4][1], (int) pointsWingsRight[6][0], (int) pointsWingsRight[6][1]);
-        Graphics.drawLine((int) pointsWingsRight[5][0], (int) pointsWingsRight[5][1], (int) pointsWingsRight[7][0], (int) pointsWingsRight[7][1]);
-        Graphics.drawLine((int) pointsWingsRight[6][0], (int) pointsWingsRight[6][1], (int) pointsWingsRight[7][0], (int) pointsWingsRight[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[1][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[2][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[3][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[2][1], (int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[3][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[0][0], (int) rotatedPointsWingsRight[0][1], (int) rotatedPointsWingsRight[4][0], (int) rotatedPointsWingsRight[4][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[1][0], (int) rotatedPointsWingsRight[1][1], (int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[5][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[2][0], (int) rotatedPointsWingsRight[2][1], (int) rotatedPointsWingsRight[6][0], (int) rotatedPointsWingsRight[6][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[3][0], (int) rotatedPointsWingsRight[3][1], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[4][0], (int) rotatedPointsWingsRight[4][1], (int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[5][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[4][0], (int) rotatedPointsWingsRight[4][1], (int) rotatedPointsWingsRight[6][0], (int) rotatedPointsWingsRight[6][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[5][0], (int) rotatedPointsWingsRight[5][1], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[7][1]);
+        Graphics.drawLine((int) rotatedPointsWingsRight[6][0], (int) rotatedPointsWingsRight[6][1], (int) rotatedPointsWingsRight[7][0], (int) rotatedPointsWingsRight[7][1]);
 
 
         Graphics.setColorRGB(255, 0, 0); // White color
-        Graphics.fillCircle((int) points[4][0], (int) points[4][1], 15);
-        Graphics.fillCircle((int) points[5][0], (int) points[5][1], 15);
-        Graphics.fillCircle((int) points[6][0], (int) points[6][1], 15);
-        Graphics.fillCircle((int) points[7][0], (int) points[7][1], 15);
-        Graphics.fillCircle((int) points[4][0] + 2, (int) points[4][1], 10);
+        Graphics.fillCircle((int) rotatedPoints[4][0], (int) rotatedPoints[4][1], 15);
+        Graphics.fillCircle((int) rotatedPoints[5][0], (int) rotatedPoints[5][1], 15);
+        Graphics.fillCircle((int) rotatedPoints[6][0], (int) rotatedPoints[6][1], 15);
+        Graphics.fillCircle((int) rotatedPoints[7][0], (int) rotatedPoints[7][1], 15);
+        Graphics.fillCircle((int) rotatedPoints[4][0] + 2, (int) rotatedPoints[4][1], 10);
         Graphics.setColorRGB(245, 149, 66); // Orange color
-        Graphics.fillCircle((int) points[4][0] + 75, (int) points[4][1] + 75, 55);
+        //Graphics.fillCircle((int) rotatedPoints[4][0] + 75, (int) rotatedPoints[4][1] + 75, 55);
         // Draw windows and lights
         Graphics.setColorRGB(255, 255, 0); // Yellow color
-        Graphics.fillCircle((int) points[4][0], (int) points[4][1], 10);
-        Graphics.fillCircle((int) points[5][0], (int) points[5][1], 10);
-        Graphics.fillCircle((int) points[6][0], (int) points[6][1], 10);
-        Graphics.fillCircle((int) points[7][0], (int) points[7][1], 10);
-        Graphics.fillCircle((int) points[4][0] + 75, (int) points[4][1] + 75, 50);
+        Graphics.fillCircle((int) rotatedPoints[4][0], (int) rotatedPoints[4][1], 10);
+        Graphics.fillCircle((int) rotatedPoints[5][0], (int) rotatedPoints[5][1], 10);
+        Graphics.fillCircle((int) rotatedPoints[6][0], (int) rotatedPoints[6][1], 10);
+        Graphics.fillCircle((int) rotatedPoints[7][0], (int) rotatedPoints[7][1], 10);
+        //Graphics.fillCircle((int) rotatedPoints[4][0] + 75, (int) rotatedPoints[4][1] + 75, 50);
 
         if (centerProjection[0] > 5) {
             flagTranslation = false;
