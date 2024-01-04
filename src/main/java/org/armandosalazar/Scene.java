@@ -14,6 +14,9 @@ public class Scene {
     private final int[] orange400 = {251, 146, 60};
     private final int[] orange600 = {234, 88, 12};
 
+    private int scaleBall = 25;
+    private int angleZ = 0;
+
     public Scene(double[] centerProjection) {
         this.centerProjection = centerProjection;
     }
@@ -25,15 +28,15 @@ public class Scene {
         double[][] points = {{1, 1, 1}, {1, 3, 1}, {3, 1, 1}, {3, 3, 1}, {-5, 1, 3}, {-4, 3, 3}, {9, 1, 3}, {8, 3, 3}};
         double[][] pointsGrandstandsCenter = {{1, 1, 1}, {1, 3, 1}, {3, 1, 1}, {3, 3, 1}, {1, 1, 3}, {1, 3, 3}, {3, 1, 3}, {3, 3, 3}};
         double[][] pointsBall = {{.5, -.5, .5}, {.5, -1.5, .5}, {1.5, -.5, .5}, {1.5, -1.5, .5}, {.5, -.5, 1.5}, {.5, -1.5, 1.5}, {1.5, -.5, 1.5}, {1.5, -1.5, 1.5}};
+        double[][] pointsBallTwo = {{.5, -.5, .5}, {.5, -1.5, .5}, {1.5, -.5, .5}, {1.5, -1.5, .5}, {.5, -.5, 1.5}, {.5, -1.5, 1.5}, {1.5, -.5, 1.5}, {1.5, -1.5, 1.5}};
+        double[][] pointsBallThree = {{.5, -.5, .5}, {.5, -1.5, .5}, {1.5, -.5, .5}, {1.5, -1.5, .5}, {.5, -.5, 1.5}, {.5, -1.5, 1.5}, {1.5, -.5, 1.5}, {1.5, -1.5, 1.5}};
 
         Graphics.setColorRGB(255, 255, 255);
 
         int scale = 30;
-        int scaleBall = 25;
         // Maths for projection: {x, y} = 2d coordinates
         mathsForProjection(points, projectionBackground, scale);
         mathsForProjection(pointsGrandstandsCenter, projectionGrandstandsCenter, scale);
-        mathsForProjection(pointsBall, centerProjection, scaleBall);
 
         // TODO: Draw background
         Graphics.setColorRBGbyArray(slate600);
@@ -76,11 +79,41 @@ public class Scene {
         Graphics.setColorRBGbyArray(slate100);
         Graphics.fillRectangle(-410, 40, 50, 20); // Draw rectangle
 
-        fillCubeFaces(pointsBall, true, true, true, true, true, true, new int[][]{orange600, orange600, orange600, orange600, orange600, orange600});
+        // TODO: Draw balls
+        angleZ++;
+        scaleBall++;
+        if (scaleBall > 50) scaleBall = 25;
+        centerProjection[0] += .1;
+        if (centerProjection[0] > 5) centerProjection[0] = -5;
+
+        mathsForProjection(pointsBall, centerProjection, scaleBall);
+        double[][] rotatedPointsBall = Graphics.rotateCube(pointsBall, 0, 0, angleZ);
+        fillCubeFaces(rotatedPointsBall, true, true, true, true, true, true, new int[][]{orange600, orange600, orange600, orange600, orange600, orange600});
         Graphics.setColorRBGbyArray(slate900);
-        drawCubeLines(pointsBall);
+        drawCubeLines(rotatedPointsBall);
 
+        mathsForProjectionWithXandY(pointsBallTwo, centerProjection, scaleBall, 10, -1);
+        double[][] rotatedPointsBallTwo = Graphics.rotateCube(pointsBallTwo, 0, 0, angleZ);
+        fillCubeFaces(rotatedPointsBallTwo, true, true, true, true, true, true, new int[][]{orange600, orange600, orange600, orange600, orange600, orange600});
+        Graphics.setColorRBGbyArray(slate900);
+        drawCubeLines(rotatedPointsBallTwo);
 
+        mathsForProjectionWithXandY(pointsBallThree, centerProjection, scaleBall, -10, -1);
+        double[][] rotatedPointsBallThree = Graphics.rotateCube(pointsBallThree, 0, 0, angleZ);
+        fillCubeFaces(rotatedPointsBallThree, true, true, true, true, true, true, new int[][]{orange600, orange600, orange600, orange600, orange600, orange600});
+        Graphics.setColorRBGbyArray(slate900);
+        drawCubeLines(rotatedPointsBallThree);
+    }
+
+    private void mathsForProjectionWithXandY(double[][] points, double[] projectionVector, int scale, int x, int y) {
+        for (int i = 0; i < points.length; i++) {
+            double u = -projectionVector[2] / (points[i][2] - projectionVector[2]);
+            points[i][0] = projectionVector[0] + (points[i][0] - projectionVector[0]) * u + x; // x
+            points[i][1] = projectionVector[1] + (points[i][1] - projectionVector[1]) * u + y; // y
+
+            points[i][0] *= scale;
+            points[i][1] *= scale;
+        }
     }
 
     private void mathsForProjection(double[][] points, double[] projectionVector, int scale) {
@@ -91,7 +124,6 @@ public class Scene {
 
             points[i][0] *= scale;
             points[i][1] *= scale;
-            Graphics.putPixel((int) points[i][0], (int) points[i][1]);
         }
     }
 
