@@ -71,7 +71,7 @@ public class Basketball {
     private void loop() {
         // glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Black background
         // TODO: Select (7, 10, 56) as the background color
-        glClearColor(7 / 255f, 10 / 255f, 56 / 255f, 0.0f); // Black background
+        glClearColor(8 / 255f, 145 / 255f, 178/ 255f, 0.0f); // Black background
 
         glPointSize(2.0f);
 

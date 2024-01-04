@@ -227,4 +227,8 @@ public abstract class Graphics {
         glColor3f(r / 255.0f, g / 255.0f, b / 255.0f);
     }
 
+    public static void setColorRBGbyArray(int[] rgb) {
+        glColor3f(rgb[0] / 255.0f, rgb[1] / 255.0f, rgb[2] / 255.0f);
+    }
+
 }
