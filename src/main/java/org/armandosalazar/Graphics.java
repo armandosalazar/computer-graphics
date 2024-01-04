@@ -114,7 +114,7 @@ public abstract class Graphics {
         drawLine(x[x.length - 1], y[y.length - 1], x[0], y[0]);
     }
 
-    public static void fillRect(int x, int y, int width, int height) {
+    public static void fillRectangle(int x, int y, int width, int height) {
         for (int i = 0; i <= height; i++) {
             drawLine(x, y + i, x + width, y + i);
         }

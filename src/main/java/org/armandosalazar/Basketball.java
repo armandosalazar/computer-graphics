@@ -12,16 +12,15 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Basketball {
     private long WINDOW;
-    private final int width = 800;
+    private final int width = 1000;
     private final int height = 600;
     private int coordinate = 0;
     private final double[] centerProjection = new double[]{2, 2, 5};
+    private final Scene scene = new Scene(centerProjection);
 
     private void draw() {
         // Coordinates 3d -> 2d
-        ElBrayan.draw(centerProjection);
-        // ElMoy.draw(centerProjection);
-        //LaSaman.draw(centerProjection);
+        scene.draw();
     }
 
     public void run() {
