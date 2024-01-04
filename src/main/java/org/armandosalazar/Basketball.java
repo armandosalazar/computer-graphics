@@ -15,7 +15,7 @@ public class Basketball {
     private final int width = 1000;
     private final int height = 600;
     private int coordinate = 0;
-    private final double[] centerProjection = new double[]{2, 2, 5};
+    private final double[] centerProjection = new double[]{1, -1, 5};
     private final Scene scene = new Scene(centerProjection);
 
     private void draw() {

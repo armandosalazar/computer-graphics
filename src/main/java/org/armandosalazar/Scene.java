@@ -24,13 +24,16 @@ public class Scene {
         // double[][] points = {{1, 1, 1}, {1, 3, 1}, {3, 1, 1}, {3, 3, 1}, {1, 1, 3}, {1, 3, 3}, {3, 1, 3}, {3, 3, 3}};
         double[][] points = {{1, 1, 1}, {1, 3, 1}, {3, 1, 1}, {3, 3, 1}, {-5, 1, 3}, {-4, 3, 3}, {9, 1, 3}, {8, 3, 3}};
         double[][] pointsGrandstandsCenter = {{1, 1, 1}, {1, 3, 1}, {3, 1, 1}, {3, 3, 1}, {1, 1, 3}, {1, 3, 3}, {3, 1, 3}, {3, 3, 3}};
+        double[][] pointsBall = {{.5, -.5, .5}, {.5, -1.5, .5}, {1.5, -.5, .5}, {1.5, -1.5, .5}, {.5, -.5, 1.5}, {.5, -1.5, 1.5}, {1.5, -.5, 1.5}, {1.5, -1.5, 1.5}};
 
         Graphics.setColorRGB(255, 255, 255);
 
         int scale = 30;
+        int scaleBall = 25;
         // Maths for projection: {x, y} = 2d coordinates
         mathsForProjection(points, projectionBackground, scale);
         mathsForProjection(pointsGrandstandsCenter, projectionGrandstandsCenter, scale);
+        mathsForProjection(pointsBall, centerProjection, scaleBall);
 
         // TODO: Draw background
         Graphics.setColorRBGbyArray(slate600);
@@ -72,6 +75,10 @@ public class Scene {
         Graphics.fillRectangle(-425, 20, 80, 60); // Draw rectangle
         Graphics.setColorRBGbyArray(slate100);
         Graphics.fillRectangle(-410, 40, 50, 20); // Draw rectangle
+
+        fillCubeFaces(pointsBall, true, true, true, true, true, true, new int[][]{orange600, orange600, orange600, orange600, orange600, orange600});
+        Graphics.setColorRBGbyArray(slate900);
+        drawCubeLines(pointsBall);
 
 
     }
